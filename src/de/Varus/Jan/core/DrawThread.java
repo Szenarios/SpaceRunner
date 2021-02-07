@@ -1,12 +1,15 @@
 package de.Varus.Jan.core;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import de.Varus.Jan.core.frame.Printer.IPrinter;
 
 public class DrawThread extends Thread {
 	private JPanel panel; 
-	public DrawThread(IPrinter printer) {
+	private JFrame frame; 
+	public DrawThread(IPrinter printer, JFrame frame) {
+		this.frame = frame; 
 		if(printer instanceof JPanel) {
 			this.panel = (JPanel) printer; 
 		} else {
@@ -18,9 +21,9 @@ public class DrawThread extends Thread {
 	@Override
 	public void run() {
 		while(true) {
-				
-			panel.print(panel.getGraphics());
 			
+			panel.paint(frame.getGraphics());
+			System.out.println("DrawThread");
 			try {
 				Thread.sleep(1000 / 60);
 			} catch (InterruptedException e) {

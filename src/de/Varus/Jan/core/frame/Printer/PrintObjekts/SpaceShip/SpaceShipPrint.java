@@ -5,10 +5,12 @@ import java.awt.Image;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 
-public class SpaceShip implements Drawable {
+public class SpaceShipPrint implements Drawable {
 	private Image image; 
 	private int x; 
 	private int y; 
+	private int wight; 
+	private int height; 
 	private SpaceShipState state; 
 	
 	@Override
@@ -38,6 +40,26 @@ public class SpaceShip implements Drawable {
 			state = SpaceShipState.GERADE; 
 			break;
 		}
+	}
+
+	@Override
+	public int x() {
+		return this.x;
+	}
+
+	@Override
+	public int y() {
+		return this.y;
+	}
+
+	@Override
+	public int width() {
+		return this.wight;
+	}
+
+	@Override
+	public int height() {
+		return this.height;
 	}
 
 }

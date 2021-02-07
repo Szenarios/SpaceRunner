@@ -1,13 +1,21 @@
 package de.Varus.Jan.core.frame.MainFrame;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
+
 
 public class MainFrame extends JFrame {
 	private ScreenMode screenMode;
 	public MainFrame() {
-		// TODO Size 
-		this.setSize(100, 199);// test
+		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setSize(d);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		this.setUndecorated(true);
 		this.setVisible(true);
+		screenMode = ScreenMode.FULLSCREEN; 
 	}
 	public ScreenMode getScreenMode() {
 		return screenMode;

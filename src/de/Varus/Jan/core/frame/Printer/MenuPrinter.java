@@ -21,7 +21,7 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowRotation;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.DifficultyPrint;
 
-public class  MenuPrinter extends JPanel implements IPrinter, MouseListener {
+public class MenuPrinter extends JPanel implements IPrinter, MouseListener {
 	private List<Drawable> drawables = new ArrayList<>(); 
 	public MenuPrinter() {
 		DifficultyPrint difficultyPrint = new DifficultyPrint(); 
@@ -53,7 +53,6 @@ public class  MenuPrinter extends JPanel implements IPrinter, MouseListener {
 			} else {
 				d.draw(g);
 			}
-			
 		}
 	}
 	

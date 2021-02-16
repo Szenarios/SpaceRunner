@@ -3,7 +3,6 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 
@@ -57,11 +56,20 @@ public class ScrollingBackgroundPrint implements Drawable {
 
 	@Override
 	public void draw(Graphics2D g) {
-		g.drawImage(bufferedImage.getSubimage(0, cutY, width(), height()), 0, 0, width(), height(), null); 
-		cutY+= scrollingPX; 
-		if(cutY > getImage().getWidth(null)) {
-			cutY = 0; 
+		int emptySpace = getImage().getHeight(null) - cutY; 
+		if(emptySpace != 0) {
+			g.drawImage(bufferedImage.getSubimage(0, cutY, width(), (cutY + height()) > getImage().getHeight(null) ? emptySpace: height()), 0, 0, width(), (cutY + height()) > getImage().getHeight(null) ? emptySpace: height(), null); 
 		}
+		if((cutY + height()) > getImage().getHeight(null)) {
+			if(cutY < getImage().getHeight(null)) {
+				g.drawImage(
+						bufferedImage.getSubimage(0, 0, width(), height() - emptySpace), 
+						0, emptySpace, width(), height() - emptySpace, null);
+			} else {
+				cutY = 0; 
+			}
+		}
+		cutY+= scrollingPX; 
 	}
 
 

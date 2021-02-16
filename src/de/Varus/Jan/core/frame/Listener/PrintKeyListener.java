@@ -14,21 +14,20 @@ public class PrintKeyListener implements KeyListener {
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
-		int key = e.getKeyCode();
-		
-		if(lastKey != 0) {
-			if(lastKey == e.getKeyCode()) {
-				if(key == KeyEvent.VK_D) {
-					spaceShipPrint.superMove(Direction.RIGHT);
-				} else 
-				if(key == KeyEvent.VK_A) {
-					spaceShipPrint.superMove(Direction.LEFT);
-				}
-				System.out.println("JOJOOO");
-			}
-		
-		} 
-		lastKey = key; 
+//		int key = e.getKeyCode();
+//		
+//		if(lastKey != 0) {
+//			if(lastKey == e.getKeyCode()) {
+//				if(key == KeyEvent.VK_D) {
+//					spaceShipPrint.superMove(Direction.RIGHT);
+//				} else 
+//				if(key == KeyEvent.VK_A) {
+//					spaceShipPrint.superMove(Direction.LEFT);
+//				}
+//			}
+//		
+//		} 
+//		lastKey = key; 
 		
 	}
 
@@ -36,10 +35,10 @@ public class PrintKeyListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode(); 
 		if(key == KeyEvent.VK_D) {
-			spaceShipPrint.startSlowMove(Direction.RIGHT);
+			spaceShipPrint.startMove(Direction.RIGHT);
 		} else 
 		if(key == KeyEvent.VK_A) {
-			spaceShipPrint.startSlowMove(Direction.LEFT);
+			spaceShipPrint.startMove(Direction.LEFT);
 		}
 	}
 
@@ -47,10 +46,10 @@ public class PrintKeyListener implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode(); 
 		if(key == KeyEvent.VK_D) {
-			spaceShipPrint.endSlowMove(Direction.RIGHT);
+			spaceShipPrint.endMove(Direction.RIGHT);
 		} else 
 		if(key == KeyEvent.VK_A) {
-			spaceShipPrint.endSlowMove(Direction.LEFT);
+			spaceShipPrint.endMove(Direction.LEFT);
 		}
 	}
 

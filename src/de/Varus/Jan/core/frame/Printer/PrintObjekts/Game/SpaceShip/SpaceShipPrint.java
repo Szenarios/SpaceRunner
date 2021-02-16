@@ -2,24 +2,32 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.SpaceShip;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.SecureCacheResponse;
 
 import javax.imageio.ImageIO;
 
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.PowerBarPrint;
 
-public class SpaceShipPrint implements Drawable {
+public class SpaceShipPrint implements Drawable, Moveable {
 	private Image image; 
 	private BufferedImage bufferedImage; 
+	
+	private Point startPositon; 
+	private Point lastBreakPositon; 
+	
 	
 	private int x; 
 	private int y; 
 	
-	private int stateY; ; 
+	private int stateY; 
 	
 	private int wight; 
 	private int height; 
@@ -37,6 +45,10 @@ public class SpaceShipPrint implements Drawable {
 		y = (int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2 - 100); 
 		x = (int) ((Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 8) * 6); 
 		bufferedImage = (BufferedImage) image; 
+		
+		startPositon = new Point(x, y); 
+		lastBreakPositon = startPositon; 
+		
 	}
 	
 	
@@ -47,8 +59,8 @@ public class SpaceShipPrint implements Drawable {
 
 	@Override
 	public void draw(Graphics2D g) {
-		if(moving) {
-			move(50, this.direction);
+		if(isMoving()) {
+			move();
 		}
 		
 		
@@ -80,7 +92,7 @@ public class SpaceShipPrint implements Drawable {
 	}
 	
 	
-	public void startSlowMove(Direction direction) {
+	public void startMove(Direction direction) {
 		this.moving = true; 
 		this.direction = direction; 
 		switch (direction) {
@@ -94,36 +106,69 @@ public class SpaceShipPrint implements Drawable {
 			break;
 		}
 	}
-	public void endSlowMove(Direction direction) {
+	public void endMove(Direction direction) {
 		if(this.direction == direction) {
 			this.moving = false; 
 			this.direction = Direction.FORWORT; 
 			this.state  = SpaceShipState.GERADE; 
+			this.lastBreakPositon = currentPosition(); 
 		}
 	}
-	public void superMove(Direction direction) {
-		move(150, direction);
-		switch (direction) {
-		case RIGHT:
-			state = SpaceShipState.STARK_RECHTS;
-			break;
-		case LEFT: 
-			state = SpaceShipState.STARK_LINKS; 
-			break; 
-		default:
-			break;
+	
+
+	@Override
+	public boolean isMoving() {
+		return moving;
+	}
+
+
+	@Override
+	public Point currentPosition() {
+		return new Point(x, y);
+	}
+
+
+	@Override
+	public Point lastBreakPosition() {
+		return lastBreakPositon;
+	}
+
+
+	@Override
+	public Point startPosition() {
+		return startPositon;
+	}
+
+
+	@Override
+	public void move() {
+		int move = 50; 
+		
+		if(lastBreakPosition().distance(x, y) > 155) {
+			switch (direction) {
+			case RIGHT:
+				state = SpaceShipState.STARK_RECHTS; 
+				break;
+			case LEFT:
+				state = SpaceShipState.STARK_LINKS; 
+				break;
+			default:
+				break;
+			}
 		}
 		
-//		this.moving = false; 
-//		this.direction = Direction.FORWORT; 
-	}
-	
-	
-	private void move(int move, Direction direction) {
+		if(state == SpaceShipState.LEICHT_LINKS || state == SpaceShipState.LEICHT_LINKS) {
+			move = 45; 
+		} else 
+		if(state == SpaceShipState.STARK_LINKS || state == SpaceShipState.STARK_RECHTS) {
+			move = 75; 
+		}
+		
+		
 		switch (direction) {
 		case RIGHT:
 			int x1 = x + move; 
-			if(x1 < Toolkit.getDefaultToolkit().getScreenSize().getWidth()) {
+			if(x1 < (Toolkit.getDefaultToolkit().getScreenSize().getWidth() - width())) {
 				this.x = x + move; 
 			}
 			break;
@@ -136,6 +181,7 @@ public class SpaceShipPrint implements Drawable {
 		default:
 			break;
 		}
+
 	}
 	
 

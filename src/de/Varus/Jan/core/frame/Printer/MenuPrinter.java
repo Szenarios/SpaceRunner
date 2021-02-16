@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import de.Varus.Jan.core.frame.Listener.PrinterMouseListener;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Background;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
@@ -19,22 +20,26 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.PlayButtonPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowInterface;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowRotation;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.DifficultyPrint;
 
-public class MenuPrinter extends JPanel implements IPrinter, MouseListener {
+public class MenuPrinter extends JPanel implements IPrinter {
 	private List<Drawable> drawables = new ArrayList<>(); 
+	private PrinterMouseListener listener; 
+	private Difficulty difficulty = Difficulty.NORMAL; 
 	public MenuPrinter() {
-		DifficultyPrint difficultyPrint = new DifficultyPrint(); 
-		registerDrawable(new BackgroundPrint(), new BSettingsPrint(), difficultyPrint, new ArrowPrint(ArrowRotation.ARROWLEFT, difficultyPrint), new ArrowPrint(ArrowRotation.ARROWRIGHT, difficultyPrint), new PlayButtonPrint());
+		listener = new PrinterMouseListener(this); 
+		
+		registerDrawable(new BackgroundPrint(), new BSettingsPrint(), new DifficultyPrint(this), new ArrowPrint(ArrowRotation.ARROWLEFT, this), new ArrowPrint(ArrowRotation.ARROWRIGHT, this), new PlayButtonPrint());
 	}	
 	
 	@Override
 	public void registerListeners(JFrame frame) {
-		frame.addMouseListener(this);
+		frame.addMouseListener(listener);
 	}
 	@Override
 	public void unregisterListeners(JFrame frame) {
-		frame.addMouseListener(this);
+		frame.addMouseListener(listener);
 	}
 	
 	
@@ -66,26 +71,12 @@ public class MenuPrinter extends JPanel implements IPrinter, MouseListener {
 		for(Drawable d : drawable)
 			this.drawables.add(d); 
 	}
-
-	@Override
-	public void mouseClicked(MouseEvent event) {
-		for(Drawable d : getDrawable()) {
-			if(d instanceof Clickable) {
-				((Clickable)d).checkAndRun(event.getX(), event.getY());
-			}
-		}
+	
+	public Difficulty getDifficulty() {
+		return difficulty; 
 	}
-
-	@Override
-	public void mouseEntered(MouseEvent event) {}
-
-	@Override
-	public void mouseExited(MouseEvent event) {}
-
-	@Override
-	public void mousePressed(MouseEvent event) {}
-
-	@Override
-	public void mouseReleased(MouseEvent event) {}
-
+	public void setDifficulty(Difficulty difficulty) { 
+		this.difficulty = difficulty; 
+	}
+	
 }

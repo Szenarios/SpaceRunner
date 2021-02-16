@@ -8,6 +8,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import de.Varus.Jan.core.Main;
+import de.Varus.Jan.core.frame.Printer.GamePrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.managing.BorderManager;
@@ -84,7 +86,9 @@ public class PlayButtonPrint implements Drawable, Clickable, Runnable {
 
 	@Override
 	public void run() {
-		// TODO 
+		
+		Main.switchPrinter(new GamePrinter());
+	
 	}
 
 }

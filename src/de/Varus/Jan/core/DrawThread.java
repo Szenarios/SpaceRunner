@@ -31,4 +31,12 @@ public class DrawThread extends Thread {
 			}
 		}
 	}
+	
+	public void chancePrinter(IPrinter printer) {
+		if(printer instanceof JPanel) {
+			this.panel = (JPanel) printer; 
+		} else {
+			// TODO Add Exeption Handle 
+		}
+	}
 }

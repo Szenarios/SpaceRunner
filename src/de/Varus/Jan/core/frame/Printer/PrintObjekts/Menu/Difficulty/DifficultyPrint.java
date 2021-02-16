@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import de.Varus.Jan.core.Main;
+import de.Varus.Jan.core.frame.Printer.MenuPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 
 public class DifficultyPrint implements Drawable {
@@ -17,12 +17,14 @@ public class DifficultyPrint implements Drawable {
 	int height; 
 	int width; 
 	
-	private Difficulty difficulty = Difficulty.NORMAL; 
+	private Difficulty difficulty; 
+	private MenuPrinter printer; 
 	private Image hard; 
 	private Image normal; 
 	private Image easy; 
-	public DifficultyPrint() {
-		this.difficulty = Main.difficulty; 
+	public DifficultyPrint(MenuPrinter printer) {
+		this.difficulty = printer.getDifficulty();; 
+		this.printer = printer; 
 		try {
 			hard = ImageIO.read(new File("Grafiks/DifficultiHard.png"));
 			easy = ImageIO.read(new File("Grafiks/DifficultiEasy.png"));
@@ -59,6 +61,8 @@ public class DifficultyPrint implements Drawable {
 
 	@Override
 	public Image getImage() {
+		this.difficulty = printer.getDifficulty(); 
+		
 		switch (difficulty) {
 		case EASY:
 			return easy; 
@@ -76,21 +80,5 @@ public class DifficultyPrint implements Drawable {
 		g.drawImage(getImage(), x, y, width, height, null); 
 	}
 	
-	public void goUp() {
-		for(Difficulty difficulty : Difficulty.values()) {
-			if (difficulty.getPosition() == (this.difficulty.getPosition() +1)) {
-				this.difficulty = difficulty; 
-				break; 
-			}
-		}
-	}
-	public void goDown() {
-		for(Difficulty difficulty : Difficulty.values()) {
-			if (difficulty.getPosition() == (this.difficulty.getPosition() -1)) {
-				this.difficulty = difficulty; 
-				break; 
-			}
-		}
-	}
 
 }

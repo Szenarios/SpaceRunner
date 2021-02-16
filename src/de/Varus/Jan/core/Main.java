@@ -10,7 +10,7 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 public class Main {
 	public  static MainFrame mainFrame; 
 	private static IPrinter aktivPrinter;  
-	
+	private static DrawThread thread;
 	public static Difficulty difficulty = Difficulty.NORMAL; 
 	public static void main(String[] args) {
 		mainFrame = new MainFrame(); 
@@ -20,7 +20,17 @@ public class Main {
 		aktivPrinter.registerListeners(mainFrame);
 		
 
-		DrawThread thread = new DrawThread(aktivPrinter, mainFrame); 
+		thread = new DrawThread(aktivPrinter, mainFrame); 
 		thread.start();
+	}
+	
+	public static void switchPrinter(IPrinter printer) { 
+		aktivPrinter.unregisterListeners(mainFrame);
+		
+		aktivPrinter = printer; 
+		aktivPrinter.registerListeners(mainFrame);
+		
+		thread.chancePrinter(printer);
+		
 	}
 }

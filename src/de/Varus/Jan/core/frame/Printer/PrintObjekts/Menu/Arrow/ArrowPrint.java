@@ -8,9 +8,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import de.Varus.Jan.core.frame.Printer.MenuPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.DifficultyPrint;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 import de.Varus.Jan.core.managing.BorderManager;
 
 public class ArrowPrint implements Drawable, Clickable, Runnable{
@@ -20,11 +21,11 @@ public class ArrowPrint implements Drawable, Clickable, Runnable{
 	private int heigt; 
 	
 	private ArrowRotation rotation;
-	private DifficultyPrint difficultyPrint; 
+	private MenuPrinter printer; 
 	private Image image; 
 		
-	public ArrowPrint(ArrowRotation rotation, DifficultyPrint difficultyPrint) {
-		this.difficultyPrint = difficultyPrint; 
+	public ArrowPrint(ArrowRotation rotation, MenuPrinter printer) {
+		this.printer = printer; 
 		this.rotation = rotation; 
 		try {
 			switch (rotation) {
@@ -67,15 +68,35 @@ public class ArrowPrint implements Drawable, Clickable, Runnable{
 	public void run() {
 		switch (rotation) {
 		case ARROWRIGHT:
-			difficultyPrint.goUp();
+			goUp();
 			break;
 		case ARROWLEFT: 
-			difficultyPrint.goDown();
+			goDown();
 			break; 
 		default:
 			break;
 		}
 	}
+	
+	public void goUp() {
+		Difficulty difficulty = printer.getDifficulty(); 
+		for(Difficulty difficultys : Difficulty.values()) {
+			if (difficultys.getPosition() == (difficulty.getPosition() +1)) {
+				printer.setDifficulty(difficultys);
+				break; 
+			}
+		}
+	}
+	public void goDown() {
+		Difficulty difficulty = printer.getDifficulty(); 
+		for(Difficulty difficultys : Difficulty.values()) {
+			if (difficultys.getPosition() == (difficulty.getPosition() -1)) {
+				printer.setDifficulty(difficultys);
+				break; 
+			}
+		}
+	}
+	
 	
 	@Override
 	public int x() {

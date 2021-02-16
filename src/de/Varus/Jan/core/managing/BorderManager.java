@@ -12,9 +12,24 @@ public class BorderManager {
 				}
 			}
 		}
-	
-		
 		return false; 
 	}
-
+	
+	public static boolean SquareOverlapSquare (Drawable d, Drawable d2) {
+		if(cordinateInside(d, d2.x(), d2.y())) {
+			return true; 
+		} else 
+		if(cordinateInside(d, d2.x() + d2.width(), d2.y())) { 
+			return true; 
+		} else 
+		if(cordinateInside(d, d2.x(), (d2.y() < 0 ? d2.y() + d2.height() : d2.y() - d2.height()))) { 
+			return true; 
+		} else 
+		if(cordinateInside(d, d2.x() + d2.width(), (d2.y() < 0 ? d2.y() + d2.height() : d2.y() - d2.height()))) { 
+			return true; 	
+		}	
+			
+		return false;
+	}
+	
 }

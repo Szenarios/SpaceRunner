@@ -64,11 +64,11 @@ public class SpaceShipPrint implements Drawable, Moveable {
 		}
 		
 		
-		stateY+= 25; 
+		stateY+= 100; 
 		if(stateY >= 1400) {
 			stateY = 0; 
 		}
-		g.drawImage(bufferedImage.getSubimage(state.get(), (stateY / 200)*200, 200, 200), x, y, 200, 200, null); 
+		g.drawImage(bufferedImage.getSubimage(0, (stateY / 200)*200, 200, 200), x, y, 250, 250, null); 
 	}
 
 	@Override

@@ -23,7 +23,6 @@ public class GamePrinter extends JPanel implements IPrinter {
 	private SpaceShipPrint spaceShipPrint; 
 	private PrintKeyListener listener; 
 	private int lives = 100; 
-	// TODO Key Listener 
 	public GamePrinter() { // Difficulty 
 		spaceShipPrint = new SpaceShipPrint(); 
 		listener = new PrintKeyListener(spaceShipPrint); 

@@ -1,9 +1,7 @@
 package de.Varus.Jan.core.frame.Printer;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +15,16 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.LifeBarPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.PowerBarPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.ScrollingBackgroundPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.SpaceShip.SpaceShipPrint;
+import de.Varus.Jan.core.managing.GameSettings;
 
 public class GamePrinter extends JPanel implements IPrinter {
 	private List<Drawable> drawables = new ArrayList<>(); 
 	private SpaceShipPrint spaceShipPrint; 
 	private PrintKeyListener listener; 
-	private int lives = 100; 
-	// TODO Key Listener 
-	public GamePrinter() { // Difficulty 
+	private GameSettings settings; 
+	
+	public GamePrinter(GameSettings settings) { 
+		this.settings = settings; 
 		spaceShipPrint = new SpaceShipPrint(); 
 		listener = new PrintKeyListener(spaceShipPrint); 
 		registerDrawable(new ScrollingBackgroundPrint(), spaceShipPrint,new LifeBarPrint(), new PowerBarPrint());

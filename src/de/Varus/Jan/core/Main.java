@@ -1,4 +1,4 @@
-package de.Varus.Jan.core;
+	package de.Varus.Jan.core;
 
 import javax.swing.JPanel;
 

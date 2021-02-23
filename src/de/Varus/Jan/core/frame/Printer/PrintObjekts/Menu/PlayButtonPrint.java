@@ -88,7 +88,7 @@ public class PlayButtonPrint implements Drawable, Clickable, Runnable {
 	@Override
 	public void run() {
 		
-		Main.switchPrinter(new GamePrinter(new GameSettings(Main.difficulty, 0, 100)));
+		Main.switchPrinter(new GamePrinter(new GameSettings(Main.difficulty)));
 	
 	}
 

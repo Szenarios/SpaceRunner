@@ -1,6 +1,6 @@
 	package de.Varus.Jan.core;
 
-import javax.swing.JPanel;
+import java.awt.Component;
 
 import de.Varus.Jan.core.frame.MainFrame.MainFrame;
 import de.Varus.Jan.core.frame.Printer.IPrinter;
@@ -14,23 +14,25 @@ public class Main {
 	public static Difficulty difficulty = Difficulty.NORMAL; 
 	public static void main(String[] args) {
 		mainFrame = new MainFrame(); 
-		
 		aktivPrinter = new MenuPrinter(); 
-		mainFrame.add((JPanel)aktivPrinter); 
 		aktivPrinter.registerListeners(mainFrame);
+		mainFrame.add((Component) aktivPrinter); 
+		
 		
 
-		thread = new DrawThread(aktivPrinter, mainFrame); 
+		thread = new DrawThread((Component) aktivPrinter, mainFrame); 
 		thread.start();
 	}
 	
 	public static void switchPrinter(IPrinter printer) { 
 		aktivPrinter.unregisterListeners(mainFrame);
+		mainFrame.remove((Component) aktivPrinter);
+		
 		
 		aktivPrinter = printer; 
 		aktivPrinter.registerListeners(mainFrame);
-		
-		thread.chancePrinter(printer);
+		mainFrame.add((Component) printer);
+		thread.chancePrinter((Component) printer);
 		
 	}
 }

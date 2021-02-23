@@ -4,11 +4,13 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+	
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
 
@@ -20,19 +22,14 @@ public class AsteroidPrint implements Drawable, Moveable {
 	
 	private int height; 
 	private int width;
-	private boolean moving; 
 	
 	private Point startPos; 
 	private Point lastPos; 
 
 	private SimpleVektor vektor; 
-	public AsteroidPrint(SimpleVektor vektor, Point start, Dimension size) {
+	public AsteroidPrint(Image image, SimpleVektor vektor, Point start, Dimension size) {
 		this.vektor = vektor; 
-		try {
-			image = ImageIO.read(new File(""));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.image = image; 
 		
 		this.x = (int) start.getX(); 
 		this.y = (int) start.getY(); 
@@ -42,7 +39,7 @@ public class AsteroidPrint implements Drawable, Moveable {
 	}
 	@Override
 	public boolean isMoving() {
-		return moving;
+		return y > Toolkit.getDefaultToolkit().getScreenSize().getHeight() ? false : true;
 	}
 
 	@Override
@@ -93,6 +90,7 @@ public class AsteroidPrint implements Drawable, Moveable {
 
 	@Override
 	public void draw(Graphics2D g) {
-		g.drawImage(image, x, y, width, height, null); 
+		if(isMoving())
+			g.drawImage(image, x, y, width, height, null); 
 	}
 }

@@ -1,29 +1,28 @@
 package de.Varus.Jan.core;
 
+import java.awt.Component;
+import java.awt.Graphics2D;
+
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import de.Varus.Jan.core.frame.Printer.IPrinter;
 
 public class DrawThread extends Thread {
-	private JPanel panel; 
+	private Component component; 
 	private JFrame frame; 
-	public DrawThread(IPrinter printer, JFrame frame) {
+	public DrawThread(Component component, JFrame frame) {
 		this.frame = frame; 
-		if(printer instanceof JPanel) {
-			this.panel = (JPanel) printer; 
-		} else {
-			// TODO Add Exeption Handle 
-			
-		}
+		this.component = component; 
 	}
 	
 	@Override
 	public void run() {
 		while(true) {
+			if(component instanceof IPrinter)
+				((IPrinter) component).drawAll((Graphics2D) frame.getGraphics());
 			
-			panel.paint(frame.getGraphics());
-			System.out.println("DrawThread");
+			component.repaint();
+//			System.out.println("DrawThread");
 			try {
 				Thread.sleep(1000 / 60);
 			} catch (InterruptedException e) {
@@ -32,11 +31,7 @@ public class DrawThread extends Thread {
 		}
 	}
 	
-	public void chancePrinter(IPrinter printer) {
-		if(printer instanceof JPanel) {
-			this.panel = (JPanel) printer; 
-		} else {
-			// TODO Add Exeption Handle 
-		}
+	public void chancePrinter(Component component) {
+			this.component = component; 
 	}
 }

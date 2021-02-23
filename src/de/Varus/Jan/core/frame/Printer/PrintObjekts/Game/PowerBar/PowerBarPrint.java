@@ -1,4 +1,4 @@
-package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game;
+package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.PowerBar;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -10,11 +10,13 @@ import javax.imageio.ImageIO;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 
-public class PowerBarPrint implements Drawable {
+public class PowerBarPrint implements Drawable{
 	private int x; 
 	private int y; 
 	private int width; 
 	private int height; 
+	
+	public double power; 
 	
 	private Image image; 
 	
@@ -24,7 +26,7 @@ public class PowerBarPrint implements Drawable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
-		
+		power = 100; 
 		
 		width = image.getWidth(null)*2; 
 		height = image.getHeight(null); 
@@ -60,7 +62,10 @@ public class PowerBarPrint implements Drawable {
 
 	@Override
 	public void draw(Graphics2D g) {
-		g.drawImage(image, x, y, width, height, null); 
+		if(power < 100) 
+			power += 0.555; 
+			
+		
+		g.drawImage(image, x, y, (int) ((width/100) * power), height, null); 
 	}
-
 }

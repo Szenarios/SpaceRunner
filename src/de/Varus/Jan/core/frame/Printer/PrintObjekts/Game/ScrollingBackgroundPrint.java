@@ -9,13 +9,16 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import de.Varus.Jan.core.Main;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Background;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 
-public class ScrollingBackgroundPrint implements Drawable {
+public class ScrollingBackgroundPrint implements Drawable, Background {
 	
 	private int scrollingPX = 10; 
 	private Image image; 
 	int cutY = 0; 
+	
+	private boolean print = true; 
 
 	
 	private BufferedImage bufferedImage; 
@@ -70,6 +73,16 @@ public class ScrollingBackgroundPrint implements Drawable {
 			}
 		}
 		cutY+= scrollingPX; 
+	}
+
+	@Override
+	public boolean print() {
+		return print;
+	}
+
+	@Override
+	public void setPrint(boolean print) {
+		this.print = print; 
 	}
 
 

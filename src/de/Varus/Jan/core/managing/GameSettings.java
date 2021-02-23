@@ -7,10 +7,13 @@ public class GameSettings {
 	private int score; 
 	private int lifes;
 	
-	public GameSettings(Difficulty difficulty, int score, int lifes) {
+	private int power; 
+	
+	public GameSettings(Difficulty difficulty) {
 		this.difficulty = difficulty; 
-		this.score = score; 
-		this.lifes = lifes; 
+		this.score = 0; 
+		this.lifes = 100;
+		this.power = 100; 
 	}
 	public Difficulty getDifficulty() {
 		return difficulty;
@@ -29,5 +32,11 @@ public class GameSettings {
 	}
 	public void setLifes(int lifes) {
 		this.lifes = lifes;
+	}
+	public int getPower() {
+		return power;
+	}
+	public void setPower(int power) {
+		this.power = power;
 	} 	
 }

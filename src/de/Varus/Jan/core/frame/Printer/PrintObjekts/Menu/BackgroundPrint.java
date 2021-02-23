@@ -60,7 +60,12 @@ public class BackgroundPrint implements Drawable, Background {
 	}
 	
 	public void setToPrint() {
-		this.print = true; 
+		setPrint(true);
+	}
+
+	@Override
+	public void setPrint(boolean print) {
+		this.print = print; 
 	}
 
 }

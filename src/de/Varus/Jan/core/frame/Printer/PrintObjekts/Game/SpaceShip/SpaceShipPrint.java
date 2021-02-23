@@ -7,14 +7,11 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.SecureCacheResponse;
 
 import javax.imageio.ImageIO;
 
-
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
-import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.PowerBarPrint;
 
 public class SpaceShipPrint implements Drawable, Moveable {
 	private Image image; 
@@ -121,29 +118,24 @@ public class SpaceShipPrint implements Drawable, Moveable {
 		return moving;
 	}
 
-
 	@Override
 	public Point currentPosition() {
 		return new Point(x, y);
 	}
-
 
 	@Override
 	public Point lastBreakPosition() {
 		return lastBreakPositon;
 	}
 
-
 	@Override
 	public Point startPosition() {
 		return startPositon;
 	}
 
-
 	@Override
 	public void move() {
 		int move = 50; 
-		
 		if(lastBreakPosition().distance(x, y) > 155) {
 			switch (direction) {
 			case RIGHT:
@@ -164,25 +156,21 @@ public class SpaceShipPrint implements Drawable, Moveable {
 			move = 75; 
 		}
 		
-		
 		switch (direction) {
-		case RIGHT:
-			int x1 = x + move; 
-			if(x1 < (Toolkit.getDefaultToolkit().getScreenSize().getWidth() - width())) {
-				this.x = x + move; 
-			}
-			break;
-		case LEFT: 
-			int x2 = x - move; 
-			if(x2 > 0) {
-				this.x = x - move; 
-			}
-			break; 
-		default:
-			break;
+			case RIGHT:
+				int x1 = x + move; 
+				if(x1 < (Toolkit.getDefaultToolkit().getScreenSize().getWidth() - width())) {
+					this.x = x + move; 
+				}
+				break;
+			case LEFT: 
+				int x2 = x - move; 
+				if(x2 > 0) {
+					this.x = x - move; 
+				}
+				break; 
+			default:
+				break;
 		}
-
 	}
-	
-
 }

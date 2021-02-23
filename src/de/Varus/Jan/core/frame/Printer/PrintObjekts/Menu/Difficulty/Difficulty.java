@@ -1,7 +1,7 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty;
 
 public enum Difficulty {
-	HARD(3, 35, 13, 17), NORMAL(2, 30, 8, 15), EASY(1, 20, 8, 10); 
+	HARD(3, 35, 13, 13), NORMAL(2, 30, 8, 10), EASY(1, 20, 8, 7); 
 	int position; 
 	Difficulty(int position, int maxSpeed, int minSpeed, int minAsteroiden) {
 		this.position = position; 

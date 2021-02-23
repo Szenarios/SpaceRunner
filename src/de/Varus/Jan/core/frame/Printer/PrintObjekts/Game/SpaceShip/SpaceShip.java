@@ -2,8 +2,18 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.SpaceShip;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.ShotPrint;
+import de.Varus.Jan.core.managing.GameSettings;
 
 public class SpaceShip extends SpaceShipPrint implements KeyListener {
+	public ArrayList<ShotPrint> shots = new ArrayList<>(); 
+	private GameSettings settings; 
+	
+	public SpaceShip(GameSettings settings) {
+		this.settings = settings; 
+	}
 	
 	@Override
 	public void keyTyped(KeyEvent e) {}
@@ -19,7 +29,9 @@ public class SpaceShip extends SpaceShipPrint implements KeyListener {
 			break;
 			
 		case KeyEvent.VK_SPACE: 
-			System.err.println("Shot");
+			System.out.println(settings.getPower());
+			if(settings.getPower() >= 100)
+				shots.add(new ShotPrint(this.currentPosition())); 
 			break; 
 		default:
 			break;

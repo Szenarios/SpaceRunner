@@ -14,6 +14,7 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Background;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.LifeBarPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.ScrollingBackgroundPrint;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.ShotPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.AsteroidPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.RandomAsteroid.RandomAsteroidPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.PowerBar.PowerBar;
@@ -21,9 +22,9 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.SpaceShip.SpaceShip;
 import de.Varus.Jan.core.managing.GameSettings;
 
 public class GamePrinter extends JPanel implements IPrinter {
+	private GameSettings settings; 
 	private List<AsteroidPrint> asteroidPrints = new ArrayList<AsteroidPrint>(); 
 	private List<Drawable> drawables = new ArrayList<>(); 
-	private GameSettings settings; 
 	
 	private BufferedImage bufferedImage; 
 	private Graphics2D graphics; 
@@ -34,8 +35,8 @@ public class GamePrinter extends JPanel implements IPrinter {
 	
 	public GamePrinter(GameSettings settings) { 
 		this.settings = settings; 
-		spaceShip = new SpaceShip(); 
-		powerBar = new PowerBar(); 
+		spaceShip = new SpaceShip(this.settings); 
+		powerBar = new PowerBar(this.settings); 
 		lifeBarPrint = new LifeBarPrint(); 
 		
 		registerDrawable(new ScrollingBackgroundPrint(), spaceShip, lifeBarPrint, powerBar);
@@ -63,9 +64,9 @@ public class GamePrinter extends JPanel implements IPrinter {
 
 	@Override
 	public void drawAll(Graphics2D g) {	
-		drawBackground(graphics);
 		generateAsteroids();
-		g.setPaintMode();
+		drawBackground(graphics);
+		
 		for(Drawable d : getDrawable()) {
 			if(!(d instanceof Background)) {
 				d.draw(graphics);
@@ -81,6 +82,16 @@ public class GamePrinter extends JPanel implements IPrinter {
 				a.move();
 			}
 		}
+		
+		for (int i = 0; i < spaceShip.shots.size(); i++) {
+			ShotPrint s = spaceShip.shots.get(i); 
+			if (!s.isMoving() || s.isDestroyed())
+				spaceShip.shots.remove(i); 
+			
+			if(s.isMoving())
+				s.draw(graphics);
+		}
+		
 		g.drawImage(bufferedImage, 0, 0, null); 
 	}
 	public void drawBackground(Graphics g) {
@@ -99,7 +110,6 @@ public class GamePrinter extends JPanel implements IPrinter {
 	public void generateAsteroids() { 
 		if(asteroidPrints.size() <= settings.getDifficulty().getMinAsteroiden()) {
 			RandomAsteroidPrint asteroid = new RandomAsteroidPrint(settings.getDifficulty());
-			System.out.println(asteroid.toString());
 			asteroidPrints.add(asteroid);
 			registerDrawable(asteroid);
 		}

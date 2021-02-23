@@ -3,9 +3,15 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.PowerBar;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import de.Varus.Jan.core.managing.GameSettings;
+
 
 public class PowerBar extends PowerBarPrint implements KeyListener {
-
+	private GameSettings settings; 
+	public PowerBar(GameSettings settings) {
+		super(settings);
+		this.settings = settings; 
+	} 
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
@@ -15,6 +21,7 @@ public class PowerBar extends PowerBarPrint implements KeyListener {
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 			if(this.power >= 100) {
 				this.power = 0; 
+				settings.setPower((int) this.power);
 				System.out.println("Piu...");
 			}		
 		}

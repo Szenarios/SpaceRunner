@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
+import de.Varus.Jan.core.managing.GameSettings;
 
 public class PowerBarPrint implements Drawable{
 	private int x; 
@@ -20,7 +21,8 @@ public class PowerBarPrint implements Drawable{
 	
 	private Image image; 
 	
-	public PowerBarPrint() {
+	private GameSettings settings; 
+	public PowerBarPrint(GameSettings settings) {
 		try {
 			image = ImageIO.read(new File("Grafiks/PowerAnzeige.png"));
 		} catch (IOException e) {
@@ -34,6 +36,7 @@ public class PowerBarPrint implements Drawable{
 		y = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() - (height*2) - 35); 
 		x = 35; 
 		
+		this.settings = settings; 
 	}
 	@Override
 	public int x() {
@@ -63,9 +66,10 @@ public class PowerBarPrint implements Drawable{
 	@Override
 	public void draw(Graphics2D g) {
 		if(power < 100) 
-			power += 0.555; 
+			power += 1; 
 			
 		
+		settings.setPower((int) this.power);
 		g.drawImage(image, x, y, (int) ((width/100) * power), height, null); 
 	}
 }

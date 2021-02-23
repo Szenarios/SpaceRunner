@@ -1,19 +1,29 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty;
 
 public enum Difficulty {
-	HARD(3, 35, 13, 13), NORMAL(2, 30, 8, 10), EASY(1, 20, 8, 7); 
-	int position; 
-	Difficulty(int position, int maxSpeed, int minSpeed, int minAsteroiden) {
-		this.position = position; 
-		this.maxSpeed = maxSpeed; 
-		this.minSpeed = minSpeed; 
-		this.minAsteroiden = minAsteroiden; 
-	}
+	HARD(3, 35, 13, 13, 15), NORMAL(2, 30, 8, 10, 10), EASY(1, 20, 8, 7, 7); 
+	private int position; 
+	
 	private int maxSpeed; 
 	private int minSpeed; 
 	
 	private int minAsteroiden; 
 	
+	private int damage; 
+	
+	Difficulty(int position, int maxSpeed, int minSpeed, int minAsteroiden, int damage) {
+		this.position = position; 
+		this.maxSpeed = maxSpeed; 
+		this.minSpeed = minSpeed; 
+		this.minAsteroiden = minAsteroiden; 
+		this.damage = damage; 
+	}
+	
+	
+	public int getDamage() {
+		return damage;
+	}
+
 	public int getPosition() {
 		return position;
 	}

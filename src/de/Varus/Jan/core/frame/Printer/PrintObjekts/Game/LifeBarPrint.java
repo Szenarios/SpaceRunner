@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
+import de.Varus.Jan.core.managing.GameSettings;
 
 public class LifeBarPrint implements Drawable {
 	private int x; 
@@ -19,7 +20,9 @@ public class LifeBarPrint implements Drawable {
 	
 	private Image image; 
 	
-	public LifeBarPrint() {
+	private GameSettings settings; 
+	
+	public LifeBarPrint(GameSettings settings) {
 		try {
 			image = ImageIO.read(new File("Grafiks/Leben.png"));
 		} catch (IOException e) {
@@ -33,6 +36,7 @@ public class LifeBarPrint implements Drawable {
 		y = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() - height - 20); 
 		x = 35; 
 		
+		this.settings = settings; 
 	}
 	@Override
 	public int x() {
@@ -61,7 +65,7 @@ public class LifeBarPrint implements Drawable {
 
 	@Override
 	public void draw(Graphics2D g) {
-		g.drawImage(image, x, y, width, height, null); 
+		g.drawImage(image, x, y, (width/100) * settings.getLifes(), height, null); 
 	}
 
 }

@@ -1,6 +1,5 @@
 package de.Varus.Jan.core.frame.Printer;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +17,17 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowRotation;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.DifficultyPrint;
+import de.Varus.Jan.core.managing.GameSettings;
 
 public class MenuPrinter extends JPanel implements IPrinter {
 	private List<Drawable> drawables = new ArrayList<>(); 
 	private PrinterMouseListener listener; 
-	private Difficulty difficulty = Difficulty.NORMAL; 
+	private GameSettings settings = new GameSettings(Difficulty.NORMAL); 
+	
 	public MenuPrinter() {
 		listener = new PrinterMouseListener(this); 
 		
-		registerDrawable(new BackgroundPrint(), new BSettingsPrint(), new DifficultyPrint(this), new ArrowPrint(ArrowRotation.ARROWLEFT, this), new ArrowPrint(ArrowRotation.ARROWRIGHT, this), new PlayButtonPrint());
+		registerDrawable(new BackgroundPrint(), new BSettingsPrint(), new DifficultyPrint(this), new ArrowPrint(ArrowRotation.ARROWLEFT, this), new ArrowPrint(ArrowRotation.ARROWRIGHT, this), new PlayButtonPrint(settings));
 	}	
 	
 	@Override
@@ -63,10 +64,10 @@ public class MenuPrinter extends JPanel implements IPrinter {
 	}
 	
 	public Difficulty getDifficulty() {
-		return difficulty; 
+		return settings.getDifficulty(); 
 	}
 	public void setDifficulty(Difficulty difficulty) { 
-		this.difficulty = difficulty; 
+		this.settings.setDifficulty(difficulty);
 	}
 	
 }

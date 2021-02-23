@@ -8,7 +8,7 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.ShotPrint;
 import de.Varus.Jan.core.managing.GameSettings;
 
 public class SpaceShip extends SpaceShipPrint implements KeyListener {
-	public ArrayList<ShotPrint> shots = new ArrayList<>(); 
+	private ArrayList<ShotPrint> shots = new ArrayList<>(); 
 	private GameSettings settings; 
 	
 	public SpaceShip(GameSettings settings) {
@@ -51,4 +51,14 @@ public class SpaceShip extends SpaceShipPrint implements KeyListener {
 			break;
 		}
 	}
+
+	public ArrayList<ShotPrint> getShots() {
+		return shots;
+	}
+	
+	public void removeByInteger(int key) {
+		shots.remove(key); 
+	}
+	
+	
 }

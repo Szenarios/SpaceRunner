@@ -19,4 +19,8 @@ public class SimpleVektor {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+	public String toString() {
+		return "x: " + x + " y: "+ y; 
+	}
 }

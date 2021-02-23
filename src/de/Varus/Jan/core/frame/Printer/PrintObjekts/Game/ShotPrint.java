@@ -72,7 +72,7 @@ public class ShotPrint implements Drawable, Moveable{
 
 	@Override
 	public int height() {
-		return this.height();
+		return this.height;
 	}
 
 	@Override

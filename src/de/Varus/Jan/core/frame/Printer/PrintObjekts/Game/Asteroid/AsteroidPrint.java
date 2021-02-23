@@ -5,17 +5,18 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-	
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
 
 public class AsteroidPrint implements Drawable, Moveable {
 	private Image image; 
+	private static Image rowImage; 
 	
 	private int x;
 	private int y; 
@@ -23,10 +24,15 @@ public class AsteroidPrint implements Drawable, Moveable {
 	private int height; 
 	private int width;
 	
+	private boolean moving = true; 
+	
 	private Point startPos; 
-	private Point lastPos; 
+	private Point lastPos;
+	
+	private boolean destroyed; 
+	private SmallAsteroidPrint[] smallAsteorieds; 
 
-	private SimpleVektor vektor; 
+	public SimpleVektor vektor; 
 	public AsteroidPrint(Image image, SimpleVektor vektor, Point start, Dimension size) {
 		this.vektor = vektor; 
 		this.image = image; 
@@ -39,7 +45,9 @@ public class AsteroidPrint implements Drawable, Moveable {
 	}
 	@Override
 	public boolean isMoving() {
-		return y > Toolkit.getDefaultToolkit().getScreenSize().getHeight() ? false : true;
+		if (!isDestroyed())
+			return y > Toolkit.getDefaultToolkit().getScreenSize().getHeight() ? false : true; 
+		return moving;
 	}
 
 	@Override
@@ -91,6 +99,52 @@ public class AsteroidPrint implements Drawable, Moveable {
 	@Override
 	public void draw(Graphics2D g) {
 		if(isMoving())
-			g.drawImage(image, x, y, width, height, null); 
+			if(!isDestroyed()) {
+				g.drawImage(image, x, y, width, height, null); 
+			} else {
+				if(smallAsteorieds == null) 
+					generateSmallAsteroids();
+				
+				if(smallAsteorieds[0].currentPosition().distance(this.currentPosition()) > 575) 
+					this.moving = false; 
+				
+				for (SmallAsteroidPrint smallAsteroidPrint : smallAsteorieds) {
+					g.drawImage(smallAsteroidPrint.getImage(), smallAsteroidPrint.x(), smallAsteroidPrint.y(), smallAsteroidPrint.width(), smallAsteroidPrint.height(), null); 
+					smallAsteroidPrint.move();
+				}
+				
+			}
+	}
+	
+	public void generateSmallAsteroids() {
+		smallAsteorieds = new SmallAsteroidPrint[6];
+		for (int i = 0; i < smallAsteorieds.length; i++) {
+			smallAsteorieds[i] = new SmallAsteroidPrint(new Point(this.currentPosition().x + (this.width / 2), this.currentPosition().y + (this.height / 2))); 
+			System.out.println(smallAsteorieds[i].vektor.toString());
+		}
+	}
+	
+	public boolean isDestroyed() {
+		return destroyed;
+	}
+	public void Destroy() {
+		this.destroyed = true; 
+	}
+	
+	public static Image getRandomImage() {
+		if(rowImage == null) {
+			try {
+				rowImage = ImageIO.read(new File("Grafiks/Asteroid.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
+		}
+		
+		BufferedImage singleAsteroid = (BufferedImage) rowImage;
+
+		int rdmY = (int) (Math.random() * 2 + 0); 
+		int rdmX = (int) (Math.random() * 2 + 0); 
+		
+		return singleAsteroid.getSubimage(rdmX*225, rdmY*225, 225, 225); 
 	}
 }

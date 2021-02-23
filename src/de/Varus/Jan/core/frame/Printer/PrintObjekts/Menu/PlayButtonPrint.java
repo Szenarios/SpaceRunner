@@ -23,7 +23,9 @@ public class PlayButtonPrint implements Drawable, Clickable, Runnable {
 	private int width; 
 	
 	private Image image; 
-	public PlayButtonPrint() {
+	private GameSettings settings; 
+	public PlayButtonPrint(GameSettings settings) {
+		this.settings = settings; 
 		
 		try {
 			image = ImageIO.read(new File("Grafiks/PlayButton.png"));
@@ -87,9 +89,7 @@ public class PlayButtonPrint implements Drawable, Clickable, Runnable {
 
 	@Override
 	public void run() {
-		
-		Main.switchPrinter(new GamePrinter(new GameSettings(Main.difficulty)));
-	
+		Main.switchPrinter(new GamePrinter(settings));
 	}
 
 }

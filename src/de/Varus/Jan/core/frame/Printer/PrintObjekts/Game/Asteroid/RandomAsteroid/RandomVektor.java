@@ -5,8 +5,8 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 
 public class RandomVektor extends SimpleVektor {
 
-	public RandomVektor(Difficulty difficulty) {
-		super((int) (Math.random() * 5 + 0), (int) (Math.random() * difficulty.getMaxSpeed() + difficulty.getMinSpeed()));
+	public RandomVektor(int maxX, int minX, int maxSpeed, int minSpeed) {
+		super((int) (Math.random() * maxX + minX), (int) (Math.random() * maxSpeed + minSpeed));
 	}
 
 }

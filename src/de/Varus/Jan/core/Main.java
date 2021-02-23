@@ -11,7 +11,6 @@ public class Main {
 	public  static MainFrame mainFrame; 
 	private static IPrinter aktivPrinter;  
 	private static DrawThread thread;
-	public static Difficulty difficulty = Difficulty.NORMAL; 
 	public static void main(String[] args) {
 		mainFrame = new MainFrame(); 
 		aktivPrinter = new MenuPrinter(); 

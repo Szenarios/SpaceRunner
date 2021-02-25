@@ -7,7 +7,10 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import de.Varus.Jan.core.frame.Listener.PrinterMouseListener;
+import de.Varus.Jan.core.Main;
+import de.Varus.Jan.core.Discord.RPC.DiscordGameStatus;
+import de.Varus.Jan.core.frame.GameSettings;
+import de.Varus.Jan.core.frame.Listener.PrinterMouse;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Background;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.BSettingsPrint;
@@ -17,17 +20,18 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowRotation;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.DifficultyPrint;
-import de.Varus.Jan.core.managing.GameSettings;
 
 public class MenuPrinter extends JPanel implements IPrinter {
 	private List<Drawable> drawables = new ArrayList<>(); 
-	private PrinterMouseListener listener; 
+	private PrinterMouse listener; 
 	private GameSettings settings = new GameSettings(Difficulty.NORMAL); 
 	
 	public MenuPrinter() {
-		listener = new PrinterMouseListener(this); 
+		listener = new PrinterMouse(this); 
 		
 		registerDrawable(new BackgroundPrint(), new BSettingsPrint(), new DifficultyPrint(this), new ArrowPrint(ArrowRotation.ARROWLEFT, this), new ArrowPrint(ArrowRotation.ARROWRIGHT, this), new PlayButtonPrint(settings));
+		
+		Main.discordStatus.chandeGameStatus(DiscordGameStatus.MENU);
 	}	
 	
 	@Override
@@ -36,7 +40,7 @@ public class MenuPrinter extends JPanel implements IPrinter {
 	}
 	@Override
 	public void unregisterListeners(JFrame frame) {
-		frame.addMouseListener(listener);
+		frame.removeMouseListener(listener);
 	}
 	
 	

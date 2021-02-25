@@ -2,6 +2,7 @@
 
 import java.awt.Component;
 
+import de.Varus.Jan.core.Discord.RPC.DiscordStatus;
 import de.Varus.Jan.core.frame.MainFrame.MainFrame;
 import de.Varus.Jan.core.frame.Printer.IPrinter;
 import de.Varus.Jan.core.frame.Printer.MenuPrinter;
@@ -11,7 +12,10 @@ public class Main {
 	public  static MainFrame mainFrame; 
 	private static IPrinter aktivPrinter;  
 	private static DrawThread thread;
+	
+	public static DiscordStatus discordStatus; 
 	public static void main(String[] args) {
+		discordStatus = new DiscordStatus();
 		mainFrame = new MainFrame(); 
 		aktivPrinter = new MenuPrinter(); 
 		aktivPrinter.registerListeners(mainFrame);
@@ -32,6 +36,7 @@ public class Main {
 		aktivPrinter.registerListeners(mainFrame);
 		mainFrame.add((Component) printer);
 		thread.chancePrinter((Component) printer);
-		
 	}
+	
+	
 }

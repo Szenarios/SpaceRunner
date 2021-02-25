@@ -2,28 +2,54 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Robot;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import de.Varus.Jan.core.BorderManager;
 import de.Varus.Jan.core.frame.Printer.MenuPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
-import de.Varus.Jan.core.managing.BorderManager;
 
-public class ArrowPrint implements Drawable, Clickable, Runnable{
+public class ArrowPrint implements Drawable, Clickable, Runnable {
+	/**
+	 * Doe X Koordinate 
+	 */
 	private int x; 
+	/**
+	 * Die Y Koordinate 
+	 */
 	private int y; 
+	/**
+	 * Die Breite in der das {@link Image} gezeichnet werden muss. 
+	 */
 	private int width; 
+	/**
+	 * Die Höhe in der das {@link Image} gezeichnet werden muss. 
+	 */
 	private int heigt; 
-	
+	/**
+	 * Die Richtung in die der Pfeil geht. 
+	 */
 	private ArrowRotation rotation;
+	/**
+	 * Der zustände MenuPrinter.
+	 */
 	private MenuPrinter printer; 
+	/**
+	 * Der {@link Image} was gezeichnet werden soll. 
+	 */
 	private Image image; 
 		
+	/**
+	 * Zeichnen einen Pfeil der in einer Bestimmte Richtung zeigt. 
+	 * @param rotation Gibt die Richtung des Pfeils mithilfe von {@link ArrowRotation} an. 
+	 * @param printer Der zustände MenuPrinter.
+	 */
 	public ArrowPrint(ArrowRotation rotation, MenuPrinter printer) {
 		this.printer = printer; 
 		this.rotation = rotation; 
@@ -36,7 +62,6 @@ public class ArrowPrint implements Drawable, Clickable, Runnable{
 				image = ImageIO.read(new File("Grafiks/PfeilRechts.png"));
 				break;
 			default:
-				// TODO 
 				break;
 			}
 		} catch (IOException e) {
@@ -78,6 +103,9 @@ public class ArrowPrint implements Drawable, Clickable, Runnable{
 		}
 	}
 	
+	/**
+	 * Erhöt denn Difficulty wenn dies geht. (Bei Hard bleibt dieser beim seleben Difficulty)
+	 */
 	public void goUp() {
 		Difficulty difficulty = printer.getDifficulty(); 
 		for(Difficulty difficultys : Difficulty.values()) {
@@ -87,6 +115,9 @@ public class ArrowPrint implements Drawable, Clickable, Runnable{
 			}
 		}
 	}
+	/**
+	 * Verringert den Difficulty wenn dies geht. (Bei Easy bleibt dieser beim selben Difficulty)
+	 */
 	public void goDown() {
 		Difficulty difficulty = printer.getDifficulty(); 
 		for(Difficulty difficultys : Difficulty.values()) {
@@ -127,6 +158,4 @@ public class ArrowPrint implements Drawable, Clickable, Runnable{
 	public void draw(Graphics2D g) {
 		g.drawImage(image, x,y, null); 
 	}
-
-
 }

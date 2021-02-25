@@ -1,4 +1,4 @@
-package de.Varus.Jan.core.managing;
+package de.Varus.Jan.core.frame;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 

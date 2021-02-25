@@ -7,10 +7,16 @@ import de.Varus.Jan.core.frame.Printer.IPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 
-public class PrinterMouseListener implements MouseListener {
-	
+public class PrinterMouse implements MouseListener {
+	/**
+	 * Aktueller Printer auf dem der MouseListener Reagiert. 
+	 */
 	private IPrinter printer; 
-	public PrinterMouseListener(IPrinter printer) {
+	/**
+	 * Erzeugt einen MouseListener der alle {@linkplain Clickable} Interaktiv macht. 
+	 * @param printer Der Aktuelle Printer auf dem der MouseListener interagieren soll. 
+	 */
+	public PrinterMouse(IPrinter printer) {
 		this.printer = printer; 
 	}
 	
@@ -34,6 +40,4 @@ public class PrinterMouseListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent event) {}
-	
-
 }

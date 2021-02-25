@@ -12,13 +12,21 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Background;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 
 public class BackgroundPrint implements Drawable, Background {
+	/**
+	 * Das {@link Image} was gezeichnet werden soll. 
+	 */
 	private Image image; 
+	/**
+	 * Ob das {@link Image} gezeichnet werden soll. 
+	 */
 	boolean print = true; 
+	/**
+	 * Zeichnent einen Hintergrund. 
+	 */
 	public BackgroundPrint() {
 		try {
 			image = ImageIO.read(new File("Grafiks/Hintergrund.png"));
 		} catch (IOException e) {
-			// TODO 
 			e.printStackTrace();
 		} 
 	}
@@ -59,6 +67,9 @@ public class BackgroundPrint implements Drawable, Background {
 		return print;
 	}
 	
+	/**
+	 * Erlaubt den Hintergrund zu zeichnen. 
+	 */
 	public void setToPrint() {
 		setPrint(true);
 	}
@@ -67,5 +78,4 @@ public class BackgroundPrint implements Drawable, Background {
 	public void setPrint(boolean print) {
 		this.print = print; 
 	}
-
 }

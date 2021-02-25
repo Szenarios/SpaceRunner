@@ -14,30 +14,71 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
 
 public class SpaceShipPrint implements Drawable, Moveable {
+	/**
+	 * Das Row {@link Image} was alle Texturen des Spaceships beinhaltet. 
+	 */
 	private Image image; 
+	/**
+	 * Das Row {@link Image} als {@link BufferedImage}.
+	 */
 	private BufferedImage bufferedImage; 
 	
+	/**
+	 * Der {@link Point} wo das {@link SpaceShipPrint} gestartet hat. 
+	 */
 	private Point startPositon; 
+	/**
+	 * Der {@link Point} wo das {@link SpaceShipPrint} als letztes eine Pause gemacht hat. 
+	 */
 	private Point lastBreakPositon; 
 	
-	
+	/**
+	 * Die X Koordinate 
+	 */
 	private int x; 
+	/**
+	 * Die Y Koordinate 
+	 */
 	private int y; 
 	
+	/**
+	 * Die Y Kordinate auf dem Row Image für die Verschieden Texturen des Raumschiffes (Von 0-1400 in 200 Schritten)
+	 */
 	private int stateY; 
 	
+	/**
+	 * Die Breite in der das {@link Image} gezeichnet werden soll. 
+	 */
 	private int wight; 
+	/**
+	 * Die Höhe in der das {@link Image} gezeichnet werden soll. 
+	 */
 	private int height; 
 	
-	private SpaceShipState state = SpaceShipState.GERADE; 
+	/**
+	 * Die Rotation des {@link SpaceShipPrint} (Momentan nicht benutzt wegen Fehlender Texturen)
+	 */
+	private SpaceShipState state = SpaceShipState.GERADE;
+	/**
+	 * Die {@link Direction} in die sich das {@link SpaceShipPrint} bewegt. 
+	 */
 	private Direction direction = Direction.FORWORT; 
+	/**
+	 * Der Wert ob sich das {@link SpaceShipPrint} gerade bewegt oder nicht.
+	 */
 	private boolean moving = false; 
+	/**
+	 * Zeichnet das SpaceShip und Animiert es. 
+	 */
 	public SpaceShipPrint() {
 		try {
 			image = ImageIO.read(new File("Grafiks/SpaceShip.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		this.wight = 255; 
+		this.height = 255; 
 		
 		y = (int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2 - 100); 
 		x = (int) ((Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 8) * 6); 
@@ -60,12 +101,14 @@ public class SpaceShipPrint implements Drawable, Moveable {
 			move();
 		}
 		
-		
+		// Pro Zeichnung wird der stateY wert immer um 100 gerechnet um ein Anders Image zu Zeichenn. 
 		stateY+= 100; 
 		if(stateY >= 1400) {
 			stateY = 0; 
 		}
-		g.drawImage(bufferedImage.getSubimage(0, (stateY / 200)*200, 200, 200), x, y, 250, 250, null); 
+		
+		// Dieser wert wird geteilt durch 200 und Mal 200 Gerechnet um nicht bei jeder neuen Aufruf eine Anderen Texture zu erzeugen sondern nur alle paar Aufrufen. 
+		g.drawImage(bufferedImage.getSubimage(0, (stateY / 200)*200, 200, 200), x, y, wight, height, null); 
 	}
 
 	@Override
@@ -88,7 +131,10 @@ public class SpaceShipPrint implements Drawable, Moveable {
 		return this.height;
 	}
 	
-	
+	/**
+	 * Setzt das Raumschiff in Bewegung. Für alle kommende Aufrufe der draw Methode wird es sich nun in die angebende Richtung bewegen.
+	 * @param direction gibt die Richtung an in die sich das SpaceShip bewegen soll. 
+	 */
 	public void startMove(Direction direction) {
 		this.moving = true; 
 		this.direction = direction; 
@@ -103,8 +149,17 @@ public class SpaceShipPrint implements Drawable, Moveable {
 			break;
 		}
 	}
+	/**
+	 * Bebende die Bewegung des SpaceShips. 
+	 * @param direction die Angebende Richtung in die, die Bewegung gestop werden soll. 
+	 */
 	public void endMove(Direction direction) {
-		if(this.direction == direction) {
+		/*
+		 * Sollte das Raumschiff sich ohne zu Stoppen in einer Andere Richtung 
+		 * bewegt haben würde beides Abgebrochen, durch die Abfrage wird nur 
+		 * abgebrochen wenn es immer noch in die selbe Richtung Fliegt. 
+		 */
+		if(this.direction == direction) {  			
 			this.moving = false; 
 			this.direction = Direction.FORWORT; 
 			this.state  = SpaceShipState.GERADE; 
@@ -135,8 +190,8 @@ public class SpaceShipPrint implements Drawable, Moveable {
 
 	@Override
 	public void move() {
-		int move = 50; 
-		if(lastBreakPosition().distance(x, y) > 155) {
+		int move = 45; 
+		if(lastBreakPosition().distance(x, y) > 150) {
 			switch (direction) {
 			case RIGHT:
 				state = SpaceShipState.STARK_RECHTS; 

@@ -15,24 +15,68 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
 
 public class AsteroidPrint implements Drawable, Moveable {
+	/**
+	 * Einzelne Texture als Image
+	 */
 	private Image image; 
+	
+	/**
+	 * Alle Neun Asteroiden Texture als Image
+	 */
 	private static Image rowImage; 
 	
+	/**
+	 * X Koordinate 
+	 */
 	private int x;
+	/** 
+	 * Y Koordinate 
+	 */
 	private int y; 
 	
+	/**
+	 * Wie Hoch das Bild gezeichnet werden soll. 
+	 */
 	private int height; 
+	/**
+	 * Wie Breit das Bild gezeichnet werden soll. 
+	 */
 	private int width;
 	
+	/**
+	 * Ob sich der Asteroid bewegt oder nicht. 
+	 */
 	private boolean moving = true; 
 	
+	/**
+	 * An welchen {@link Point} der Asteroid gestartet ist. 
+	 */
 	private Point startPos; 
+	/**
+	 * An welchem {@link Point} der Asteroid zu letzt pasuiert ist. 
+	 */
 	private Point lastPos;
 	
+	/**
+	 * Ob der Asteroid zerstört wurde oder nicht. 
+	 */
 	private boolean destroyed; 
-	private SmallAsteroidPrint[] smallAsteorieds; 
+	/** 
+	 * Zwischengespeicherte Asteroiden die zur Destroy Animation gebraucht werden. 
+	 */
+	private SmallAsteroidPrint[] smallAsteroieds; 
 
+	/**
+	 * Der {@link SimpleVektor} der die Richtung des Asteroiden angibt. 
+	 */
 	public SimpleVektor vektor; 
+	/**
+	 * Ein zu Zeichnender Asteroid. 
+	 * @param image Die einzekne Texture des Asteoriden. 
+	 * @param vektor Der {@link SimpleVetkor} der die Richtung in der er sich bewegt angibt. 
+	 * @param start Wo der Asteroid starten soll. 
+	 * @param size Wie groß der Asteroid seien soll. 
+	 */
 	public AsteroidPrint(Image image, SimpleVektor vektor, Point start, Dimension size) {
 		this.vektor = vektor; 
 		this.image = image; 
@@ -98,17 +142,26 @@ public class AsteroidPrint implements Drawable, Moveable {
 
 	@Override
 	public void draw(Graphics2D g) {
+		// Wenn er sich nicht mehr Bewegt ist er aushalb des Bildschirms also wird er nicht gezeichnet!
 		if(isMoving())
+			// Wenn er nicht zerstört ist wird er gezeichnet!
 			if(!isDestroyed()) {
 				g.drawImage(image, x, y, width, height, null); 
+				g.drawRect(x, y, width, height);
 			} else {
-				if(smallAsteorieds == null) 
+				/**
+				 * Die SmallAsteroieds werden generiert wenn diese noch nicht Exestieren. 
+				 * Anschließend werden sie gezeichnet und bewegen sich je nach Richtungs Vektor 
+				 * in verschiede Richtungen. Sollten diese zu weit weg von dem Ursprungs Punkt 
+				 * sein verschwienden sie. 
+				 */
+				if(smallAsteroieds == null) 
 					generateSmallAsteroids();
 				
-				if(smallAsteorieds[0].currentPosition().distance(this.currentPosition()) > 575) 
+				if(smallAsteroieds[0].currentPosition().distance(this.currentPosition()) > 575) 
 					this.moving = false; 
 				
-				for (SmallAsteroidPrint smallAsteroidPrint : smallAsteorieds) {
+				for (SmallAsteroidPrint smallAsteroidPrint : smallAsteroieds) {
 					g.drawImage(smallAsteroidPrint.getImage(), smallAsteroidPrint.x(), smallAsteroidPrint.y(), smallAsteroidPrint.width(), smallAsteroidPrint.height(), null); 
 					smallAsteroidPrint.move();
 				}
@@ -116,21 +169,35 @@ public class AsteroidPrint implements Drawable, Moveable {
 			}
 	}
 	
+	/**
+	 * Füllte den smallAsteroieds Array mit kleinen Random Asteroiden. 
+	 */
 	public void generateSmallAsteroids() {
-		smallAsteorieds = new SmallAsteroidPrint[6];
-		for (int i = 0; i < smallAsteorieds.length; i++) {
-			smallAsteorieds[i] = new SmallAsteroidPrint(new Point(this.currentPosition().x + (this.width / 2), this.currentPosition().y + (this.height / 2))); 
-			System.out.println(smallAsteorieds[i].vektor.toString());
+		smallAsteroieds = new SmallAsteroidPrint[6];
+		for (int i = 0; i < smallAsteroieds.length; i++) {
+			smallAsteroieds[i] = new SmallAsteroidPrint(new Point(this.currentPosition().x + (this.width / 2), this.currentPosition().y + (this.height / 2))); 
+			System.out.println(smallAsteroieds[i].vektor.toString());
 		}
 	}
 	
+	/**
+	 * Gibt zurück ob der Asteroid zerstört ist. 
+	 * @return {@link Boolean} true wenn der Asteroid zerstört ist. 
+	 */
 	public boolean isDestroyed() {
 		return destroyed;
 	}
+	/**
+	 * Setzt den Asteroiden als Zerstört. 
+	 */
 	public void Destroy() {
 		this.destroyed = true; 
 	}
 	
+	/**
+	 * Gibt ein Random image aus dem RowImage zurück. 
+	 * @return Gibt ein Image aus einem der 9 Asteroiden Texturen aus. 
+	 */
 	public static Image getRandomImage() {
 		if(rowImage == null) {
 			try {

@@ -2,11 +2,10 @@ package de.Varus.Jan.core;
 
 import java.util.List;
 
+import de.Varus.Jan.core.frame.GameSettings;
+import de.Varus.Jan.core.frame.Listener.SpaceShip;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.ShotPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.AsteroidPrint;
-import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.SpaceShip.SpaceShip;
-import de.Varus.Jan.core.managing.BorderManager;
-import de.Varus.Jan.core.managing.GameSettings;
 
 public class HitBoxCheckingThread extends Thread {
 	private SpaceShip spaceShip; 
@@ -52,7 +51,7 @@ public class HitBoxCheckingThread extends Thread {
 				
 				
 				if(!asteroid.isDestroyed())
-					if(BorderManager.SquareOverlapSquare(asteroid, spaceShip)) {
+					if(BorderManager.SquareOverlapSquare(spaceShip, asteroid)) {
 						settings.setLifes(settings.getLifes() - settings.getDifficulty().getDamage());
 						asteroid.Destroy();
 						System.out.println(settings.getDifficulty().name());

@@ -22,7 +22,7 @@ public class DrawThread extends Thread {
 				((IPrinter) component).drawAll((Graphics2D) frame.getGraphics());
 			
 			component.repaint();
-			System.out.println("DrawThread");
+//			System.out.println("DrawThread");
 			try {
 				Thread.sleep(1000 / 60);
 			} catch (InterruptedException e) {

@@ -1,13 +1,23 @@
-package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.PowerBar;
+package de.Varus.Jan.core.frame.Listener;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import de.Varus.Jan.core.managing.GameSettings;
+import de.Varus.Jan.core.frame.GameSettings;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.PowerBar.PowerBarPrint;
 
 
 public class PowerBar extends PowerBarPrint implements KeyListener {
+	/**
+	 * Die {@link GameSettings} die je nach Knopf druck bearbeitet werden. 
+	 */
 	private GameSettings settings; 
+	/**
+	 * Reagiert auf die Leertatste und setze unseren Power wert in den {@link GameSettings} auf 0; 
+	 * @see PowerBarPrint
+	 * @see KeyListener
+	 * @param settings Die {@link GameSettings} die den Power Wert Speichern. 
+	 */
 	public PowerBar(GameSettings settings) {
 		super(settings);
 		this.settings = settings; 

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import de.Varus.Jan.core.managing.BorderManager;
+import de.Varus.Jan.core.BorderManager;
 
 class BorderTest {
 

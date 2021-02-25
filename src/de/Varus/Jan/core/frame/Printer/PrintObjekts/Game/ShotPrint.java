@@ -6,17 +6,36 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 
+import de.Varus.Jan.core.frame.Listener.PowerBar;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
 
 public class ShotPrint implements Drawable, Moveable{
+	/**
+	 * Die X Koordinate
+	 */
 	private int x; 
+	/**
+	 * Die Y Koordinate 
+	 */
 	private int y; 
+	/**
+	 * Die Höhe der Grafik 
+	 */
 	private int height; 
+	/**
+	 * Die Breite der Grafik
+	 */
 	private int width; 
 	
+	/**
+	 * Ob der Schuss Zerstört ist oder nicht.
+	 */
 	private boolean destroyed; 
 	
+	/**
+	 * Der {@link Point} wo der Schuss gestartet ist. 
+	 */
 	private Point startPosition; 
 	public ShotPrint(Point startPosition) {
 		this.startPosition = startPosition; 
@@ -89,10 +108,18 @@ public class ShotPrint implements Drawable, Moveable{
 		 }
 	}
 	
+	/**
+	 * Gibt zurück ob der Schuss zerstört wurde. 
+	 * @return Gibt einen {@link Boolean} zurück ob der Schuss zerstört worden ist. (True wenn ja)
+	 */
 	public boolean isDestroyed() {
 		return destroyed;
 	}
 
+	/**
+	 * Setzt ob der Schuss zerstört worden ist oder nicht. 
+	 * @param destroyed Der Wert als {@link Boolean} der als neuer Wert gsetzt wird. 
+	 */
 	public void setDestroyed(boolean destroyed) {
 		this.destroyed = destroyed;
 	}

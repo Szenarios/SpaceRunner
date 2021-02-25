@@ -12,16 +12,47 @@ import de.Varus.Jan.core.frame.Printer.MenuPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 
 public class DifficultyPrint implements Drawable {
+	/**
+	 * Die X Koordinate 
+	 */
 	int x; 
+	/**
+	 * Die Y Koordinate 
+	 */
 	int y; 
+	/**
+	 * Die Höhe in der das Bild gezeichnet werden soll. 
+	 */
 	int height; 
+	/** 
+	 * Die Breite in der das Bild gezeichnet werden soll. 
+	 */
 	int width; 
 	
+	/**
+	 * Der Difficulty der gezeichnet werden soll. 
+	 */
 	private Difficulty difficulty; 
-	private MenuPrinter printer; 
+	/**
+	 * Der zuständige Menu Printer. 
+	 */
+	private MenuPrinter printer;
+	/**
+	 * Das {@link Image} für den "Hard" Difficulty.
+	 */
 	private Image hard; 
+	/**
+	 * Das {@link Image} für den "Normal" Difficulty.
+	 */
 	private Image normal; 
+	/**
+	 * Das {@link Image} für den "Easy" Difficulty.
+	 */
 	private Image easy; 
+	/**
+	 * Zeichnet je nach Difficulty diesen entsprechend. 
+	 * @param printer Der zuständige MenuPrinter. 
+	 */
 	public DifficultyPrint(MenuPrinter printer) {
 		this.difficulty = printer.getDifficulty();; 
 		this.printer = printer; 
@@ -79,6 +110,4 @@ public class DifficultyPrint implements Drawable {
 	public void draw(Graphics2D g) {
 		g.drawImage(getImage(), x, y, width, height, null); 
 	}
-	
-
 }

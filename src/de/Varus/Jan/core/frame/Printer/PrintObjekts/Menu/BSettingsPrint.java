@@ -7,10 +7,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import de.Varus.Jan.core.BorderManager;
 import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-import de.Varus.Jan.core.managing.BorderManager;
 
 
 public class BSettingsPrint implements Drawable, Clickable, Runnable {
@@ -30,7 +30,6 @@ public class BSettingsPrint implements Drawable, Clickable, Runnable {
 		} 
 		this.width = 55; 
 		this.height = 55;
-		
 		this.x = (int) (Main.mainFrame.getSize().getWidth() - width - 10); 
 		this.y = (int) 10; 
 		
@@ -88,7 +87,4 @@ public class BSettingsPrint implements Drawable, Clickable, Runnable {
 	public int height() {
 		return this.height;
 	}
-
-
-
 }

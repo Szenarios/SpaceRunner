@@ -8,20 +8,45 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import de.Varus.Jan.core.frame.GameSettings;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-import de.Varus.Jan.core.managing.GameSettings;
 
-public class PowerBarPrint implements Drawable{
+public class PowerBarPrint implements Drawable {
+	/**
+	 * X Koordinate 
+	 */
 	private int x; 
+	/**
+	 * Y Koordinate 
+	 */
 	private int y; 
+	/**
+	 * Breite in dem das Bild gezeichnet werden soll. 
+	 */
 	private int width; 
+	/** 
+	 * Höhe in dem das Bild gezeichnet werden soll. 
+	 */
 	private int height; 
 	
+	/**
+	 * Die Power der Bar. (0-100%)
+	 */
 	public double power; 
 	
+	/**
+	 * Das {@link Image} was gezeichnet werden soll. 
+	 */
 	private Image image; 
 	
+	/**
+	 * Die {@link GameSettings} zum Speichern des Power Wertes. 
+	 */
 	private GameSettings settings; 
+	/**
+	 * Zeichnet die Power bar je nach angebenden Power Wert in {@link GameSettings}
+	 * @param settings Die {@link GameSettings} die den Powerwert verhaltet. 
+	 */
 	public PowerBarPrint(GameSettings settings) {
 		try {
 			image = ImageIO.read(new File("Grafiks/PowerAnzeige.png"));
@@ -70,6 +95,8 @@ public class PowerBarPrint implements Drawable{
 			
 		
 		settings.setPower((int) this.power);
+		
+		// Zeichnet die Power bar je nach Power. 
 		g.drawImage(image, x, y, (int) ((width/100) * power), height, null); 
 	}
 }

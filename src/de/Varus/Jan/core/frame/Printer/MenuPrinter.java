@@ -1,6 +1,7 @@
 package de.Varus.Jan.core.frame.Printer;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,29 +10,57 @@ import javax.swing.JPanel;
 
 import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.Discord.RPC.DiscordGameStatus;
+import de.Varus.Jan.core.Runnables.Buttons.CloseButtonRunnable;
 import de.Varus.Jan.core.frame.GameSettings;
 import de.Varus.Jan.core.frame.Listener.PrinterMouse;
+import de.Varus.Jan.core.frame.MainFrame.MainFrame;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Background;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.BSettingsPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.BackgroundPrint;
-import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.PlayButtonPrint;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.LogoPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowRotation;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Buttons.ButtonPrint;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Buttons.PlayButtonPrint;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Buttons.SoundButton;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.DifficultyPrint;
 
 public class MenuPrinter extends JPanel implements IPrinter {
+	/**
+	 * Alle weiteren Drawables diese gezeichnet werden müssen.
+	 */
 	private List<Drawable> drawables = new ArrayList<>(); 
+	/**
+	 * Der Mouselistner der die Clicks an die Clickable weiter leitet. 
+	 */
 	private PrinterMouse listener; 
-	private GameSettings settings = new GameSettings(Difficulty.NORMAL); 
+	/**
+	 * Die {@link GameSettings} womit das Game gestartet wird. 
+	 */
+	private GameSettings settings; 
+	/**
+	 * Zwischengespeichertes Bild auf das alle Drawables gezeichnet werden.  
+	 */
+	private BufferedImage bufferedImage;
+	/**
+	 * Graphics vom bufferedImage 
+	 */
+	private Graphics2D graphics; 
 	
-	public MenuPrinter() {
+	/**
+	 * Zeichnet alle Drawables auf dem {@link MainFrame}.
+	 * @param settings Die Aktuellen {@link GameSettings} 
+	 */
+	public MenuPrinter(GameSettings settings) {
+		this.settings = settings; 
 		listener = new PrinterMouse(this); 
 		
-		registerDrawable(new BackgroundPrint(), new BSettingsPrint(), new DifficultyPrint(this), new ArrowPrint(ArrowRotation.ARROWLEFT, this), new ArrowPrint(ArrowRotation.ARROWRIGHT, this), new PlayButtonPrint(settings));
+		registerDrawable(new BackgroundPrint(), new ButtonPrint("Grafiks/CloseButton.png", new CloseButtonRunnable(), 1), new SoundButton(2), new DifficultyPrint(this), new ArrowPrint(ArrowRotation.ARROWLEFT, this), new ArrowPrint(ArrowRotation.ARROWRIGHT, this), new PlayButtonPrint(settings), new LogoPrint());
 		
 		Main.discordStatus.chandeGameStatus(DiscordGameStatus.MENU);
+		
+		init();
 	}	
 	
 	@Override
@@ -54,12 +83,14 @@ public class MenuPrinter extends JPanel implements IPrinter {
 		for(Drawable d : getDrawable()) {
 			if(d instanceof Background) {
 				if(((Background) d).print()) {
-					d.draw(g);
+					d.draw(graphics);
 				}
 			} else {
-				d.draw(g);
+				d.draw(graphics);
 			}
 		}
+		
+		g.drawImage(bufferedImage, 0, 0, null); 
 	}
 	@Override
 	public void registerDrawable(Drawable... drawable) {
@@ -67,11 +98,24 @@ public class MenuPrinter extends JPanel implements IPrinter {
 			this.drawables.add(d); 
 	}
 	
+	/**
+	 * Gibt den Aktuellen {@link Difficulty} zurück.
+	 * @return Der Aktuelle {@link Difficulty}
+	 */
 	public Difficulty getDifficulty() {
 		return settings.getDifficulty(); 
 	}
+	/**
+	 * Setze den Aktuellen {@link Difficulty}. 
+	 * @param difficulty Der Neue Aktuelle {@link Difficulty}. 
+	 */
 	public void setDifficulty(Difficulty difficulty) { 
 		this.settings.setDifficulty(difficulty);
 	}
 	
+	// Iniziiert das Bufferimage das zwischen gespeichert wird. 
+	public void init() {
+		bufferedImage = new BufferedImage(Main.mainFrame.getWidth(), Main.mainFrame.getHeight(), BufferedImage.TYPE_INT_RGB);
+		graphics = (Graphics2D) bufferedImage.getGraphics();
+	}
 }

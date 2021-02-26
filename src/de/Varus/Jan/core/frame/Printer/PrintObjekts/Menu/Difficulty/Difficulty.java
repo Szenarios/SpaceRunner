@@ -1,7 +1,7 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty;
 
 public enum Difficulty {
-	HARD(3, 35, 13, 13, 15), NORMAL(2, 30, 8, 10, 10), EASY(1, 20, 8, 7, 7); 
+	HARD(3, 35, 13, 10, 15), NORMAL(2, 30, 8, 8, 10), EASY(1, 20, 8, 7, 7); 
 	private int position; 
 	
 	private int maxSpeed; 

@@ -1,9 +1,7 @@
 package de.Varus.Jan.core;
 
-import java.awt.Rectangle;
-
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Collideable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 
 public class BorderManager {
 	public static boolean cordinateInside(Drawable d, int x, int y)  {
@@ -18,11 +16,8 @@ public class BorderManager {
 		return false; 
 	}
 	
-	public static boolean SquareOverlapSquare (Drawable d, Drawable d2) {
-		Rectangle rectD = new Rectangle(d.x(), d.y(), d.width(), d.height());
-		Rectangle rectD2 = new Rectangle(d2.x(), d2.y(), d2.width(), d2.height());
-		
-		return rectD.intersects(rectD2); 
+	public static boolean SquareOverlapSquare (Collideable d, Collideable d2) {
+		return d.getHitbox().intersects(d2.getHitbox());
 	}
 	
 }

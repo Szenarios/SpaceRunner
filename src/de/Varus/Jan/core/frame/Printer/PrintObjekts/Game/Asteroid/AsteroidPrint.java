@@ -1,9 +1,11 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -11,10 +13,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Collideable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
 
-public class AsteroidPrint implements Drawable, Moveable {
+public class AsteroidPrint implements Drawable, Moveable, Collideable {
 	/**
 	 * Einzelne Texture als Image
 	 */
@@ -134,6 +137,13 @@ public class AsteroidPrint implements Drawable, Moveable {
 	public int height() {
 		return height;
 	}
+	
+	@Override
+	public Rectangle getHitbox() {
+		int cutWidth = width / 10; 
+		int cutHeight = height / 10; 
+		return new Rectangle(x+cutWidth, y+6, width-(cutWidth*3), height-(cutHeight*3));
+	}
 
 	@Override
 	public Image getImage() {
@@ -147,7 +157,10 @@ public class AsteroidPrint implements Drawable, Moveable {
 			// Wenn er nicht zerstört ist wird er gezeichnet!
 			if(!isDestroyed()) {
 				g.drawImage(image, x, y, width, height, null); 
+				g.setColor(Color.white);
 				g.drawRect(x, y, width, height);
+				g.setColor(Color.red);
+				g.drawRect((int)getHitbox().getX(), (int)getHitbox().getY(), (int)getHitbox().getWidth(), (int)getHitbox().getHeight());
 			} else {
 				/**
 				 * Die SmallAsteroieds werden generiert wenn diese noch nicht Exestieren. 

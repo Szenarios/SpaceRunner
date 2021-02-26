@@ -26,12 +26,12 @@ class BorderTest {
 		TestDrawable e = new TestDrawable(7, 5, 6, 6); 
 		TestDrawable f = new TestDrawable(7, -3, 10, 6); 
 		
-		assertTrue(BorderManager.SquareOverlapSquare(a, b));
-		assertTrue(BorderManager.SquareOverlapSquare(a, c));
-		assertTrue(BorderManager.SquareOverlapSquare(a, f));
-		
-		assertFalse(BorderManager.SquareOverlapSquare(b, f));
-		assertFalse(BorderManager.SquareOverlapSquare(d, e));
+//		assertTrue(BorderManager.SquareOverlapSquare(a, b));
+//		assertTrue(BorderManager.SquareOverlapSquare(a, c));
+//		assertTrue(BorderManager.SquareOverlapSquare(a, f));
+//		
+//		assertFalse(BorderManager.SquareOverlapSquare(b, f));
+//		assertFalse(BorderManager.SquareOverlapSquare(d, e));
 	}
 	
 }

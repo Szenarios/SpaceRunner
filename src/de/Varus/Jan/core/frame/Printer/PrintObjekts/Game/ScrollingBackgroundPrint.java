@@ -42,7 +42,7 @@ public class ScrollingBackgroundPrint implements Drawable, Background {
 	 */
 	public ScrollingBackgroundPrint() {
 		try {
-			image = ImageIO.read(new File("Grafiks/ScrollingBackground.png"));
+			image = ImageIO.read(new File("Grafiks/FinalScrollingBackground.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

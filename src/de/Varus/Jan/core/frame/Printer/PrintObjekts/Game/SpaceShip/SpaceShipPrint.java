@@ -3,6 +3,7 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.SpaceShip;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,10 +11,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Collideable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
 
-public class SpaceShipPrint implements Drawable, Moveable {
+public class SpaceShipPrint implements Drawable, Moveable, Collideable {
 	/**
 	 * Das Row {@link Image} was alle Texturen des Spaceships beinhaltet. 
 	 */
@@ -109,6 +111,8 @@ public class SpaceShipPrint implements Drawable, Moveable {
 		
 		// Dieser wert wird geteilt durch 200 und Mal 200 Gerechnet um nicht bei jeder neuen Aufruf eine Anderen Texture zu erzeugen sondern nur alle paar Aufrufen. 
 		g.drawImage(bufferedImage.getSubimage(0, (stateY / 200)*200, 200, 200), x, y, wight, height, null); 
+	
+		g.drawRect((int)getHitbox().getX(), (int)getHitbox().getY(), (int)getHitbox().getWidth(), (int)getHitbox().getHeight());
 	}
 
 	@Override
@@ -227,5 +231,11 @@ public class SpaceShipPrint implements Drawable, Moveable {
 			default:
 				break;
 		}
+	}
+
+
+	@Override
+	public Rectangle getHitbox() {
+		return new Rectangle(x + ((wight /2) - (wight / 4)), y, wight/2, height); 
 	}
 }

@@ -36,6 +36,10 @@ public class LifeBarPrint implements Drawable {
 	private Image image; 
 	
 	/**
+	 * Der Rahmen der um das {@link Image} gezeichnet werden soll. 
+	 */
+	private Image rahmen; 
+	/**
 	 * Die {@link GameSettings}. 
 	 */
 	private GameSettings settings; 
@@ -46,7 +50,8 @@ public class LifeBarPrint implements Drawable {
 	 */
 	public LifeBarPrint(GameSettings settings) {
 		try {
-			image = ImageIO.read(new File("Grafiks/Leben.png"));
+			image = ImageIO.read(new File("Grafiks/SimpleLivesEbene.png"));
+			rahmen = ImageIO.read(new File("Grafiks/Rahmen.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
@@ -88,5 +93,7 @@ public class LifeBarPrint implements Drawable {
 	@Override
 	public void draw(Graphics2D g) {
 		g.drawImage(image, x, y, (width/100) * settings.getLifes(), height, null); 
+		g.drawImage(rahmen, x, y, (width/100) * 100, height, null); 
+	
 	}
 }

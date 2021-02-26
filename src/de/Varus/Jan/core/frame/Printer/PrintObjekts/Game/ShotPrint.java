@@ -4,13 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import de.Varus.Jan.core.frame.Listener.PowerBar;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Collideable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
 
-public class ShotPrint implements Drawable, Moveable{
+public class ShotPrint implements Drawable, Moveable, Collideable{
 	/**
 	 * Die X Koordinate
 	 */
@@ -108,6 +110,11 @@ public class ShotPrint implements Drawable, Moveable{
 		 }
 	}
 	
+	@Override
+	public Rectangle getHitbox() {
+		return new Rectangle(x, y, width, height);
+	}
+	
 	/**
 	 * Gibt zurück ob der Schuss zerstört wurde. 
 	 * @return Gibt einen {@link Boolean} zurück ob der Schuss zerstört worden ist. (True wenn ja)
@@ -123,4 +130,6 @@ public class ShotPrint implements Drawable, Moveable{
 	public void setDestroyed(boolean destroyed) {
 		this.destroyed = destroyed;
 	}
+
+
 }

@@ -57,9 +57,9 @@ public class DifficultyPrint implements Drawable {
 		this.difficulty = printer.getDifficulty();; 
 		this.printer = printer; 
 		try {
-			hard = ImageIO.read(new File("Grafiks/DifficultiHard.png"));
-			easy = ImageIO.read(new File("Grafiks/DifficultiEasy.png"));
-			normal = ImageIO.read(new File("Grafiks/DifficultiNormal.png"));
+			hard = ImageIO.read(new File("Grafiks/FinalDifficultiHard.png"));
+			easy = ImageIO.read(new File("Grafiks/FinalDifficultiEasy.png"));
+			normal = ImageIO.read(new File("Grafiks/FinalDifficultiNormal.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 

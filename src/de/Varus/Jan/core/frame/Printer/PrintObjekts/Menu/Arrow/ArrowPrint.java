@@ -2,7 +2,6 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Robot;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
@@ -56,10 +55,10 @@ public class ArrowPrint implements Drawable, Clickable, Runnable {
 		try {
 			switch (rotation) {
 			case ARROWLEFT:
-				image = ImageIO.read(new File("Grafiks/PfeilLinks.png"));
+				image = ImageIO.read(new File("Grafiks/FinalPfeilLinks.png"));
 				break;
 			case ARROWRIGHT:
-				image = ImageIO.read(new File("Grafiks/PfeilRechts.png"));
+				image = ImageIO.read(new File("Grafiks/FinalPfeilRechts.png"));
 				break;
 			default:
 				break;

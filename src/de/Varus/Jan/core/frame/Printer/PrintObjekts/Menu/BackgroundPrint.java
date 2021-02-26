@@ -25,7 +25,7 @@ public class BackgroundPrint implements Drawable, Background {
 	 */
 	public BackgroundPrint() {
 		try {
-			image = ImageIO.read(new File("Grafiks/Hintergrund.png"));
+			image = ImageIO.read(new File("Grafiks/MenuBackgrpund.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
@@ -59,7 +59,6 @@ public class BackgroundPrint implements Drawable, Background {
 	@Override
 	public void draw(Graphics2D g) {
 		g.drawImage(image, x(), y(), null); 
-		print = false; 
 	}
 
 	@Override
@@ -67,13 +66,6 @@ public class BackgroundPrint implements Drawable, Background {
 		return print;
 	}
 	
-	/**
-	 * Erlaubt den Hintergrund zu zeichnen. 
-	 */
-	public void setToPrint() {
-		setPrint(true);
-	}
-
 	@Override
 	public void setPrint(boolean print) {
 		this.print = print; 

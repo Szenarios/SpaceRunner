@@ -71,7 +71,8 @@ public class ReplayButtonPrint implements Drawable, Clickable, Runnable {
 	
 	@Override
 	public void run() {
-		Main.switchPrinter(new MenuPrinter());
+		settings.reset();
+		Main.switchPrinter(new MenuPrinter(settings));
 	}
 
 	@Override

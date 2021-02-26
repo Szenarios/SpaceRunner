@@ -6,8 +6,14 @@ import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import de.Varus.Jan.core.frame.MainFrame.MainFrame;
 import de.Varus.Jan.core.frame.Printer.IPrinter;
-
+/**
+ * Updatet den {@link MainFrame} und das {@link Component} auf diesem. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class DrawThread extends Thread {
 	/**
 	 * Das {@link Component} was repaintet wird. 
@@ -17,6 +23,11 @@ public class DrawThread extends Thread {
 	 * Der {@link JFrame} auf dem alles Stattfindet, 
 	 */
 	private JFrame frame; 
+	/**
+	 * Erzeugt einen Thread der den {@link MainFrame} Aktuallisiert. 
+	 * @param component Das {@link Component} was neu gezeichnet wird. 
+	 * @param frame Der {@link JFrame} auf dem es neu gezeichnet wird. 
+	 */
 	public DrawThread(Component component, JFrame frame) {
 		this.frame = frame; 
 		this.component = component; 

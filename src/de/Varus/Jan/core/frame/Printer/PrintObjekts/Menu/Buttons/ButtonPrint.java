@@ -12,7 +12,12 @@ import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 
-
+/**
+ * Erstellt einen Button mit eigener Texture und Runnable. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class ButtonPrint implements Drawable, Clickable {
 	/**
 	 * Die X Koordinate 

@@ -5,13 +5,16 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 
-import de.Varus.Jan.core.frame.Listener.PowerBar;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Collideable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
-
+/**
+ * Zeichnet einen einfach Schuss. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class ShotPrint implements Drawable, Moveable, Collideable{
 	/**
 	 * Die X Koordinate
@@ -39,6 +42,10 @@ public class ShotPrint implements Drawable, Moveable, Collideable{
 	 * Der {@link Point} wo der Schuss gestartet ist. 
 	 */
 	private Point startPosition; 
+	/**
+	 * Zeichnet einen Schuss. 
+	 * @param startPosition Die Statut Position des Schusses. 
+	 */
 	public ShotPrint(Point startPosition) {
 		this.startPosition = startPosition; 
 		

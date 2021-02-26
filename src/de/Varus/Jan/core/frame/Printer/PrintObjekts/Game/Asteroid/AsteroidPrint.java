@@ -17,6 +17,12 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Collideable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
 
+/**
+ * Ein einzelner Asteorid der gezeichnet wird und beim zerstören Animiert wird. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class AsteroidPrint implements Drawable, Moveable, Collideable {
 	/**
 	 * Einzelne Texture als Image
@@ -76,7 +82,7 @@ public class AsteroidPrint implements Drawable, Moveable, Collideable {
 	/**
 	 * Ein zu Zeichnender Asteroid. 
 	 * @param image Die einzekne Texture des Asteoriden. 
-	 * @param vektor Der {@link SimpleVetkor} der die Richtung in der er sich bewegt angibt. 
+	 * @param vektor Der {@link SimpleVektor} der die Richtung in der er sich bewegt angibt. 
 	 * @param start Wo der Asteroid starten soll. 
 	 * @param size Wie groß der Asteroid seien soll. 
 	 */

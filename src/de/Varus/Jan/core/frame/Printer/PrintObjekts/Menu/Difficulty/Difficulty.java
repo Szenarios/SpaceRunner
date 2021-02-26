@@ -1,5 +1,10 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty;
-
+/**
+ * Gibt den Difficulty an und enthält alle grentwerte für diesen. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public enum Difficulty {
 	HARD(3, 35, 13, 10, 15), NORMAL(2, 30, 8, 8, 10), EASY(1, 20, 8, 7, 7); 
 	private int position; 

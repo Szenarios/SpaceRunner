@@ -8,7 +8,12 @@ import de.Varus.Jan.core.frame.GameSettings;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.ShotPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.SpaceShip.Direction;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.SpaceShip.SpaceShipPrint;
-
+/**
+ * Der KeyListener zum {@link SpaceShipPrint} der dieses verändern sowie schüsse abgibt. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class SpaceShip extends SpaceShipPrint implements KeyListener {
 	/**
 	 * Die Schüsse {@link ShotPrint} in einer Liste  
@@ -21,9 +26,9 @@ public class SpaceShip extends SpaceShipPrint implements KeyListener {
 	
 	/**
 	 * Reagiert auf die Tasten D und A und verändert die Kordinaten von {@link SpaceShipPrint} dementsprechend. 
-	 * @see SpaceShipPrint
+	 * @see SpaceShipPrint 
 	 * @see KeyListener
-	 * @param settings
+	 * @param settings Die Aktuellen {@link GameSettings}
 	 */
 	public SpaceShip(GameSettings settings) {
 		this.settings = settings; 
@@ -68,7 +73,7 @@ public class SpaceShip extends SpaceShipPrint implements KeyListener {
 
 	/**
 	 * Gibt die Aktuellen schüsse wieder. 
-	 * @return Alle {@link Shotprint} die Aktiv sind in einer Liste. 
+	 * @return Alle {@link ShotPrint} die Aktiv sind in einer Liste. 
 	 */
 	public ArrayList<ShotPrint> getShots() {
 		return shots;

@@ -1,9 +1,11 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts;
 
 import java.awt.Point;
-
-import de.Varus.Jan.core.frame.Listener.PowerBar;
-
+/**
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public interface Moveable {
 	/**
 	 * Gibt zurück ob sich das Objekt bewegt. 

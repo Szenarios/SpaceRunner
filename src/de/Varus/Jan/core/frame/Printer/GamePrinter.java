@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import de.Varus.Jan.core.DrawThread;
 import de.Varus.Jan.core.HitBoxCheckingThread;
 import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.Discord.RPC.DiscordGameStatus;
@@ -18,13 +19,20 @@ import de.Varus.Jan.core.frame.EndGameSence;
 import de.Varus.Jan.core.frame.GameSettings;
 import de.Varus.Jan.core.frame.Listener.PowerBar;
 import de.Varus.Jan.core.frame.Listener.SpaceShip;
+import de.Varus.Jan.core.frame.MainFrame.MainFrame;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.LifeBarPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.ScrollingBackgroundPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.ShotPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.AsteroidPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.RandomAsteroid.RandomAsteroidPrint;
-
+/**
+ * Der GamePrinter ist das {@link JPanel} was auf dem {@link MainFrame} durch den {@link DrawThread} gezeichnet wird und beinhaltet alle {@link Drawable} diese gezeichnet werden müssen, sowie alle Listener. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
+@SuppressWarnings("serial")
 public class GamePrinter extends JPanel implements IPrinter {
 	/**
 	 * Settings in denen Relevante Informationen für das Spiel gespeichert sind. 
@@ -65,7 +73,7 @@ public class GamePrinter extends JPanel implements IPrinter {
 	 * Interaktives Fenster zum ende des Spiels 
 	 */
 	private EndGameSence endGameSence; 
-	/*
+	/**
 	 * Thread der sich beendet sobald die Leben kleiner Null fallen und das Spiel beendet. (Läuft auf 1000/60 Millisekunden)
 	 */
 	private HitBoxCheckingThread hitBoxCheckingThread; 
@@ -200,7 +208,9 @@ public class GamePrinter extends JPanel implements IPrinter {
 		
 	}
 	
-	// Iniziiert das Bufferimage das zwischen gespeichert wird. 
+	/**
+	 * Iniziiert das Bufferimage das zwischen gespeichert wird. 
+	 */
 	public void init() {
 		bufferedImage = new BufferedImage(Main.mainFrame.getWidth(), Main.mainFrame.getHeight(), BufferedImage.TYPE_INT_RGB);
 		graphics = (Graphics2D) bufferedImage.getGraphics();
@@ -216,7 +226,7 @@ public class GamePrinter extends JPanel implements IPrinter {
 
 	/**
 	 * Gibt das Spaceship in unserem Aktuellen Spiel zurück. 
-	 * @return Return das {@link Spaceship}. 
+	 * @return Return das {@link SpaceShip}. 
 	 */
 	public SpaceShip getSpaceShip() {
 		return spaceShip;
@@ -224,7 +234,7 @@ public class GamePrinter extends JPanel implements IPrinter {
 
 	/**
 	 * Gibt die Aktuelle Powerbar zurück. 
-	 * @return {@linkplain Powerbar} mit aktuellen werten. 
+	 * @return {@linkplain PowerBar} mit aktuellen werten. 
 	 */
 	public PowerBar getPowerBar() {
 		return powerBar;

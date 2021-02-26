@@ -14,7 +14,12 @@ import javax.imageio.ImageIO;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Collideable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
-
+/**
+ * Zeichnet und Animiert das SpaceShip
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class SpaceShipPrint implements Drawable, Moveable, Collideable {
 	/**
 	 * Das Row {@link Image} was alle Texturen des Spaceships beinhaltet. 

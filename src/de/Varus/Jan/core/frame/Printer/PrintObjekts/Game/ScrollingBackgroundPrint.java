@@ -11,7 +11,12 @@ import javax.imageio.ImageIO;
 import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Background;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-
+/**
+ * Erstellt einen Scrollenden Hintergrund, in einer Endlosschleife. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class ScrollingBackgroundPrint implements Drawable, Background {
 	
 	/**

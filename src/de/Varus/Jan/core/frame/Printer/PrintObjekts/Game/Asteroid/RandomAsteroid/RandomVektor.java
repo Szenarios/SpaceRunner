@@ -1,8 +1,13 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.RandomAsteroid;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.SimpleVektor;
-import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 
+/**
+ * Gibt einen Random Richtungs Vektor wieder der zwischen bestimmten werten liegt. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class RandomVektor extends SimpleVektor {
 	
 	/**

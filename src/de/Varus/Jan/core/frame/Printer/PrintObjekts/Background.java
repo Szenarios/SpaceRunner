@@ -1,5 +1,10 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts;
-
+/**
+ * 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public interface Background {
 	/**
 	 * Gibt an ob der Background gezeichnet werden soll. 

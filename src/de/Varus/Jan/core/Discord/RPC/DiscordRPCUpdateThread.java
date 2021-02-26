@@ -1,7 +1,12 @@
 package de.Varus.Jan.core.Discord.RPC;
 
 import club.minnced.discord.rpc.DiscordRPC;
-
+/**
+ * Updatet Discord RPC und ruft die Callbacks auf. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class DiscordRPCUpdateThread extends Thread {
 	/**
 	 * Der Discord RPC der am Leben gehalten wird. 

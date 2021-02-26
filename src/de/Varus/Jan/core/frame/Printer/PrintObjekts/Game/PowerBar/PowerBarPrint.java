@@ -10,7 +10,12 @@ import javax.imageio.ImageIO;
 
 import de.Varus.Jan.core.frame.GameSettings;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-
+/**
+ * Zeichnet eine Powerbar anhand von dem Aktuellen {@link GameSettings}. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class PowerBarPrint implements Drawable {
 	/**
 	 * X Koordinate 

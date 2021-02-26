@@ -1,5 +1,10 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid;
-
+/**
+ * Ein einfacher Vektor. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class SimpleVektor {
 	/*
 	 * X Koordinate 
@@ -27,6 +32,7 @@ public class SimpleVektor {
 	}
 	/**
 	 * Setzt die X Koordinate neu. 
+	 * @param x Die neue X Koordinate 
 	 */
 	public void setX(int x) {
 		this.x = x;
@@ -40,6 +46,7 @@ public class SimpleVektor {
 	}
 	/**
 	 * Setzt die Y Koordinate neu. 
+	 * @param y Die neue Y Koordinate 
 	 */
 	public void setY(int y) {
 		this.y = y;

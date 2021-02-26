@@ -11,7 +11,12 @@ import de.Varus.Jan.core.frame.MainFrame.MainFrame;
 import de.Varus.Jan.core.frame.Printer.IPrinter;
 import de.Varus.Jan.core.frame.Printer.MenuPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
-
+/**
+ * Die Main Klasse die alles vereint. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class Main {
 	/**
 	 * Das {@link MainFrame} als {@link JFrame}. 
@@ -37,6 +42,10 @@ public class Main {
 	 * Der {@link MusikPlayer} der unsere Musik Managet. 
 	 */
 	public static MusikPlayer musikPlayer; 
+	/**
+	 * Die Main Methode
+	 * @param args Args die Übergeben werden. 
+	 */
 	public static void main(String[] args) {
 		settings = new GameSettings(Difficulty.NORMAL); 
 		

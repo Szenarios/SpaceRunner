@@ -2,7 +2,11 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-
+/**
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public interface Drawable {
 	/**
 	 * Gibt die X Koordinate zurück. 

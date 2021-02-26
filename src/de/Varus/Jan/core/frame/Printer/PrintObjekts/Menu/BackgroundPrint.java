@@ -10,7 +10,12 @@ import javax.imageio.ImageIO;
 import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Background;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-
+/**
+ * Zeichnet den Menu Background. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class BackgroundPrint implements Drawable, Background {
 	/**
 	 * Das {@link Image} was gezeichnet werden soll. 

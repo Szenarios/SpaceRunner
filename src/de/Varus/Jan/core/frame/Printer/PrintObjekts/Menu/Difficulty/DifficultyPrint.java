@@ -10,7 +10,12 @@ import javax.imageio.ImageIO;
 
 import de.Varus.Jan.core.frame.Printer.MenuPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-
+/**
+ * Zeichnet den Aktuellen {@link Difficulty} mit entsprechender Texture. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class DifficultyPrint implements Drawable {
 	/**
 	 * Die X Koordinate 

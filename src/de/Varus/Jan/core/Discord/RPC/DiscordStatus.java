@@ -3,7 +3,12 @@ package de.Varus.Jan.core.Discord.RPC;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
-
+/**
+ * Managet die Status Meldung von Discord im gesamten Programm. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class DiscordStatus  {
 	/**
 	 * Thread der die RPC am Leben hält. 
@@ -64,7 +69,7 @@ public class DiscordStatus  {
 	}
 	/**
 	 * Ändern den Game Status. 
-	 * @param status
+	 * @param status Der neue Discord Game Status
 	 */
 	public void chandeGameStatus(DiscordGameStatus status) {
 		setStatus(status);

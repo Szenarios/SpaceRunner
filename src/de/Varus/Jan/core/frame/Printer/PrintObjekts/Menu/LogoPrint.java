@@ -9,15 +9,38 @@ import javax.imageio.ImageIO;
 
 import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-
+/**
+ * Zeichnet den Logo Banner des Spiels auf Menu. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class LogoPrint implements Drawable {
+	/**
+	 * Die X Koordinate 
+	 */
 	private int x; 
+	/**
+	 * Die Y Koordinate 
+	 */
 	private int y; 
+	/**
+	 * Die breite in der, der Banner gezeichnet werden soll. 
+	 */
 	private int width;
+	/**
+	 * Die höhe in der, der Banner gezeichnet werden soll. 
+	 */
 	private int height; 
 	
+	/**
+	 * Das Bild was gezeichnet werden soll. 
+	 */
 	private Image image;
 
+	/**
+	 * Erzeugt den Banner als {@link Image}.
+	 */
 	public LogoPrint() {
 		try {
 			image = ImageIO.read(new File("Grafiks/Space_Runner_Logo.png")); 

@@ -4,9 +4,14 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-
+/**
+ * Der Hauptframe auf dem alles gezeichnet wird. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
+@SuppressWarnings("serial")
 public class MainFrame extends JFrame {
 	/**
 	 * Der Aktuelle ScreenMode des Hauptfensters. 

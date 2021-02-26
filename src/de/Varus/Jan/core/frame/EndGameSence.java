@@ -7,11 +7,19 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JPanel;
+
 import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.Discord.RPC.DiscordGameStatus;
 import de.Varus.Jan.core.frame.Listener.ReplayButton;
+import de.Varus.Jan.core.frame.Printer.GamePrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.End.EndGameFramePrint;
-
+/**
+ * Vereint {@link ReplayButton} und {@link EndGameFramePrint} und zeichnend diesen auf das schon bestenden {@link JPanel} des {@link GamePrinter}s. Und Registiert die neuen Listener für diesen bestimmten Frame. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class EndGameSence {
 	/**
 	 * Das EndGame Frame 

@@ -13,7 +13,12 @@ import de.Varus.Jan.core.frame.Printer.MenuPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
-
+/**
+ * Zeichnet einen Peil zum einstellen des {@link Difficulty}.
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class ArrowPrint implements Drawable, Clickable, Runnable {
 	/**
 	 * Doe X Koordinate 

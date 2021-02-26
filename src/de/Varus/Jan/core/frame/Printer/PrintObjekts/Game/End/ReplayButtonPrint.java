@@ -1,6 +1,5 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.End;
 
-import java.applet.AudioClip;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -16,8 +15,12 @@ import de.Varus.Jan.core.frame.GameSettings;
 import de.Varus.Jan.core.frame.Printer.MenuPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
-
+/**
+ * Zeichnet den Replay Button.
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class ReplayButtonPrint implements Drawable, Clickable, Runnable {
 	/**
 	 * Die X Koordinate 
@@ -52,6 +55,11 @@ public class ReplayButtonPrint implements Drawable, Clickable, Runnable {
 	 * Die Größe des Game OVer Frames 
 	 */
 	private Dimension dimension; 
+	/**
+	 * Erstellt auf dem GameOver Frame einen Replay Button 
+	 * @param settings Die Aktuellen GameSettings
+	 * @param dimension Die größe des GameOver Frames 
+	 */
 	public ReplayButtonPrint(GameSettings settings, Dimension dimension) {
 		try {
 			image = ImageIO.read(new File("Grafiks/ReplayButton.png"));

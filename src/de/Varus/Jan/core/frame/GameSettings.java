@@ -1,7 +1,12 @@
 package de.Varus.Jan.core.frame;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
-
+/**
+ * Beinhaltet alle wichtigen Informationen über ein laufendes Game. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class GameSettings {
 	/**
 	 * Der Aktuelle Difficulty des Games. 

@@ -6,7 +6,12 @@ import java.awt.event.KeyListener;
 import de.Varus.Jan.core.frame.GameSettings;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.PowerBar.PowerBarPrint;
 
-
+/**
+ * Ist der KeyListener zu {@link PowerBarPrint} und bearbeitet diesen bei Knopfclicks. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class PowerBar extends PowerBarPrint implements KeyListener {
 	/**
 	 * Die {@link GameSettings} die je nach Knopf druck bearbeitet werden. 

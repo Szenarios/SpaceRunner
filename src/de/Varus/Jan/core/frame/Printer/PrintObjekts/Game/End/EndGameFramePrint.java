@@ -9,6 +9,12 @@ import javax.imageio.ImageIO;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 
+/**
+ * Zeichnet das Game Over Frame. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class EndGameFramePrint implements Drawable {
 	/**
 	 * Das Image was gezeichnet werden soll. 

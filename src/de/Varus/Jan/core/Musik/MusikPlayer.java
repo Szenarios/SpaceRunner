@@ -12,7 +12,12 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-
+/**
+ * Lädt einen bestimmten Track und kann diesen Abspielen und wieder Starten. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class MusikPlayer {
 	/**
 	 * Der Pfad zur Aido File. 
@@ -28,24 +33,24 @@ public class MusikPlayer {
 	 * Lädt die Audio File in unseren Clip
 	 */
 	public MusikPlayer() {
-//		InputStream stream;
-//		try {
-//			stream = new FileInputStream(new File(PFAD));
-//			AudioInputStream audioStream = AudioSystem.getAudioInputStream(stream);
-//			
-//			Clip clip = AudioSystem.getClip(); 
-//			clip.open(audioStream);
-//			
-//			this.clip = clip; 
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (UnsupportedAudioFileException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} catch (LineUnavailableException e) {
-//			e.printStackTrace();
-//		} 
+		InputStream stream;
+		try {
+			stream = new FileInputStream(new File(PFAD));
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(stream);
+			
+			Clip clip = AudioSystem.getClip(); 
+			clip.open(audioStream);
+			clip.setLoopPoints(0, (int) audioStream.getFrameLength());
+			this.clip = clip; 
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedAudioFileException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			e.printStackTrace();
+		} 
 	}
 	
 	/**
@@ -64,6 +69,7 @@ public class MusikPlayer {
 	
 	/**
 	 * Gibt zurück ob der Clip läuft 
+	 * @return True wenn Clip Aktiv ist. False wenn dieser null oder inaktiv ist. 
 	 */
 	public boolean isClipAktiv() {
 		if(this.clip == null) 

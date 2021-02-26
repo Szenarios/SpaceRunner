@@ -22,7 +22,13 @@ import de.Varus.Jan.core.frame.Printer.GamePrinter;
 import de.Varus.Jan.core.frame.Printer.IPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
-
+/**
+ * Zeichnet den Story Text auf den Bildschirm in einer Animation. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
+@SuppressWarnings("serial")
 public class StoryPrinter extends JPanel implements IPrinter, KeyListener {
 	/**
 	 * Die {@link Drawable} die gezeichnet werden. 
@@ -119,7 +125,9 @@ public class StoryPrinter extends JPanel implements IPrinter, KeyListener {
 			drawables.add(d); 
 	}
 	
-	// Iniziiert das Bufferimage das zwischen gespeichert wird. 
+	/**
+	 * Iniziiert das Bufferimage das zwischen gespeichert wird. 
+	 */
 	public void init() {
 		bufferedImage = new BufferedImage(Main.mainFrame.getWidth(), Main.mainFrame.getHeight(), BufferedImage.TYPE_INT_RGB);
 		graphics = (Graphics2D) bufferedImage.getGraphics();

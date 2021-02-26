@@ -5,7 +5,12 @@ import java.awt.Point;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.RandomAsteroid.RandomAsteroidPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.RandomAsteroid.RandomVektor;
-
+/**
+ * Ein Art von {@link RandomAsteroidPrint} nur in einem kleineren Format und ohne Hitboxen. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class SmallAsteroidPrint extends AsteroidPrint {
 	/**
 	 * Generiert einen kleinen Asteroiden. Ähnlich wie {@link RandomAsteroidPrint} nur mit anderen {@link SimpleVektor} als Richtungs Vektor. 

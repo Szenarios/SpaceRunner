@@ -8,7 +8,12 @@ import de.Varus.Jan.core.frame.Listener.SpaceShip;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.ShotPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.AsteroidPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.SpaceShip.SpaceShipPrint;
-
+/**
+ * Übersprüft laufend alle Hitboxen miteinander und führt wenn nötig Collisionen aus.
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class HitBoxCheckingThread extends Thread {
 	/**
 	 * Das {@link SpaceShip}

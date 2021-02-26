@@ -5,11 +5,16 @@ import java.awt.Dimension;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.AsteroidPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 
-
+/**
+ * Ist ein {@link AsteroidPrint} nur mit Random Richtiguns Vektor sowie Koordinate abhängig von dem Schwierigkeitsgrad. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class RandomAsteroidPrint extends AsteroidPrint {
 	/**
 	 * Erzeugt ein {@link AsteroidPrint} mit Random Richtung Vektor, Random Größe und einem Random Texture
-	 * @param difficulty
+	 * @param difficulty Der Aktuelle {@link Difficulty}
 	 */
 	public RandomAsteroidPrint(Difficulty difficulty) {
 		super(getRandomImage(), new RandomVektor(5,0, difficulty.getMaxSpeed(), difficulty.getMinSpeed()), new RandomPoint(), getRandomSize());

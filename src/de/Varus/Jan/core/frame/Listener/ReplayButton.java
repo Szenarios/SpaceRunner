@@ -6,7 +6,12 @@ import java.awt.event.MouseListener;
 
 import de.Varus.Jan.core.frame.GameSettings;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.End.ReplayButtonPrint;
-
+/**
+ * Der MouseListener zu {@link ReplayButtonPrint} der die Action des Buttons ausführt bei Click.
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class ReplayButton extends ReplayButtonPrint implements MouseListener {
 	/**
 	 * {@link MouseListener} für {@link ReplayButtonPrint} 

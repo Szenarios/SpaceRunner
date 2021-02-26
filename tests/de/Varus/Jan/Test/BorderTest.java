@@ -19,12 +19,12 @@ class BorderTest {
 	
 	@Test
 	void SquareOverlapSquareTest() {
-		TestDrawable a = new TestDrawable(0, 0, 10, 10); 
-		TestDrawable b = new TestDrawable(5, 5, 10, 10); 
-		TestDrawable c = new TestDrawable(2, 2, 5, 5); 
-		TestDrawable d = new TestDrawable(-5, -5, 7, 2); 
-		TestDrawable e = new TestDrawable(7, 5, 6, 6); 
-		TestDrawable f = new TestDrawable(7, -3, 10, 6); 
+//		TestDrawable a = new TestDrawable(0, 0, 10, 10); 
+//		TestDrawable b = new TestDrawable(5, 5, 10, 10); 
+//		TestDrawable c = new TestDrawable(2, 2, 5, 5); 
+//		TestDrawable d = new TestDrawable(-5, -5, 7, 2); 
+//		TestDrawable e = new TestDrawable(7, 5, 6, 6); 
+//		TestDrawable f = new TestDrawable(7, -3, 10, 6); 
 		
 //		assertTrue(BorderManager.SquareOverlapSquare(a, b));
 //		assertTrue(BorderManager.SquareOverlapSquare(a, c));

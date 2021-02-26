@@ -15,7 +15,12 @@ import de.Varus.Jan.core.frame.Printer.GamePrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Story.StoryPrinter;
-
+/**
+ * Erzeugt und Zeichnet den PlayButton der zum Starten des Spiels benötigt wird. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class PlayButtonPrint implements Drawable, Clickable, Runnable {
 	/**
 	 * Die X Koordinate 
@@ -46,7 +51,7 @@ public class PlayButtonPrint implements Drawable, Clickable, Runnable {
 	
 	/**
 	 * Zeichnet einen Button der das Spiel startet. 
-	 * @param settings
+	 * @param settings Die Aktuellen {@link GameSettings} 
 	 */
 	public PlayButtonPrint(GameSettings settings) {
 		this.settings = settings; 

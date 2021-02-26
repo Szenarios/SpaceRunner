@@ -6,7 +6,11 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-
+/**
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public interface IPrinter {
 	/**
 	 * Registiert die gebrauchten Listener auf unser Frame
@@ -20,11 +24,11 @@ public interface IPrinter {
 	void unregisterListeners(JFrame frame);
 	/**
 	 * Gibt alle Drawables zurück. 
-	 * @return Eine Lister Aller {@link Drawables}. 
+	 * @return Eine Lister Aller {@link Drawable}s. 
 	 */
 	List<Drawable> getDrawable(); 
 	/**
-	 * Zeichnet alle {@link Drawables}. 
+	 * Zeichnet alle {@link Drawable}s. 
 	 * @param g {@link Graphics2D} auf dem diese {@link Drawable} gezeichnet werden sollen. 
 	 */
 	void drawAll(Graphics2D g); 

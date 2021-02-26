@@ -6,7 +6,12 @@ import java.awt.event.MouseListener;
 import de.Varus.Jan.core.frame.Printer.IPrinter;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Clickable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-
+/**
+ * Der MouseListener der alle {@link Clickable} aufruft. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class PrinterMouse implements MouseListener {
 	/**
 	 * Aktueller Printer auf dem der MouseListener Reagiert. 

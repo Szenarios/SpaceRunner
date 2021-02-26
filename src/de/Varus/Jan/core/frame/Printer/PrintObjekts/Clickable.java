@@ -1,6 +1,10 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts;
 
-
+/**
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public interface Clickable {
 	/**
 	 * Führt die das {@link Runnable} aus. 

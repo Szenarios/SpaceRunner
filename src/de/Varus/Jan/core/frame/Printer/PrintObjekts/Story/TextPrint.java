@@ -10,7 +10,12 @@ import java.util.ArrayList;
 import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Moveable;
-
+/**
+ * Zeichnet den angebenden Text an die Angegebende Koordinate 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class TextPrint implements Drawable, Moveable {
 	/**
 	 * Die X Koordinate 
@@ -30,8 +35,6 @@ public class TextPrint implements Drawable, Moveable {
 	 * Der Text der gezeichnet wird. 
 	 */
 	private ArrayList<String> text = new ArrayList<String>(); 
-	
-	private double size = 0; 
 	
 	/**
 	 * Zeichnet einen Text der von unten nach oben wandert. 

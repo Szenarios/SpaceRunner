@@ -11,7 +11,12 @@ import javax.imageio.ImageIO;
 
 import de.Varus.Jan.core.frame.GameSettings;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
-
+/**
+ * Zeichnet eine LifeBar anhand der Aktuellen {@link GameSettings}.
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
 public class LifeBarPrint implements Drawable {
 	/**
 	 * Die X Koordinate

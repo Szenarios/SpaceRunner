@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import de.Varus.Jan.core.DrawThread;
 import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.Discord.RPC.DiscordGameStatus;
 import de.Varus.Jan.core.Runnables.Buttons.CloseButtonRunnable;
@@ -25,7 +26,13 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Buttons.PlayButtonPrint
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Buttons.SoundButton;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.DifficultyPrint;
-
+/**
+ * Der {@link MenuPrinter} ist das {@link JPanel} was auf den {@link MainFrame} mit dem {@link DrawThread} gezeichnet wird. Es beinhaltet alle {@link Drawable} und Listener die gebraucht werden. Und erstellt für das kommende Spiel die benötigten {@link GameSettings}. 
+ * @author Szenarios
+ * @version B26.2.21 
+ *
+ */
+@SuppressWarnings("serial")
 public class MenuPrinter extends JPanel implements IPrinter {
 	/**
 	 * Alle weiteren Drawables diese gezeichnet werden müssen.

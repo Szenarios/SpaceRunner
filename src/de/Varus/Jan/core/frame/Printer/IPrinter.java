@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 /**
+ * Kann mehrere {@link Drawable} zeichnen und Listener Regiestieren
  * @author Szenarios
  * @version B26.2.21 
  *

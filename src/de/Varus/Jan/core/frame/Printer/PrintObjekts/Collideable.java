@@ -2,6 +2,7 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts;
 
 import java.awt.Rectangle;
 /**
+ * Kann kollidieren. 
  * @author Szenarios
  * @version B26.2.21 
  *

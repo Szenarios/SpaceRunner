@@ -1,6 +1,6 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty;
 /**
- * Gibt den Difficulty an und enthält alle grentwerte für diesen. 
+ * Gibt den Difficulty an und enthält alle grenzwerte für diesen. 
  * @author Szenarios
  * @version B26.2.21 
  *

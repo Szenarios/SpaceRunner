@@ -3,7 +3,7 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.DifficultyPrint;
 /**
- * Das Interface wird für die {@link Difficulty} einszellung genutzt um bei einem (Egal welche Richtung) click der Richtige Button getriggert wird.
+ * Das Interface wird für die {@link Difficulty} einstellung genutzt um bei einem (Egal welche Richtung) click der Richtigen Button getriggert wird.
  * @author Szenarios
  * @version B26.2.21 
  *

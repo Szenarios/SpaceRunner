@@ -15,7 +15,7 @@ import de.Varus.Jan.core.frame.GameSettings;
 /**
  * Lädt einen bestimmten Track und kann diesen Abspielen und wieder Starten. 
  * @author Szenarios
- * @version B26.2.21 
+ * @version F1.03.21
  *
  */
 public class MusikPlayer {
@@ -37,6 +37,7 @@ public class MusikPlayer {
 	
 	/**
 	 * Lädt die Audio File in unseren Clip
+	 * @param settings Die Aktuellen {@link GameSettings}
 	 */
 	public MusikPlayer(GameSettings settings) {
 		this.settings = settings; 

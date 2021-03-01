@@ -3,6 +3,7 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts;
 import java.awt.Graphics2D;
 import java.awt.Image;
 /**
+ * Kann gezeichnet werden.
  * @author Szenarios
  * @version B26.2.21 
  *

@@ -1,6 +1,5 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -165,10 +164,10 @@ public class AsteroidPrint implements Drawable, Moveable, Collideable {
 				g.drawImage(image, x, y, width, height, null); 
 				
 				// Hitboxen
-				g.setColor(Color.white);
-				g.drawRect(x, y, width, height);
-				g.setColor(Color.red);
-				g.drawRect((int)getHitbox().getX(), (int)getHitbox().getY(), (int)getHitbox().getWidth(), (int)getHitbox().getHeight());
+//				g.setColor(Color.white);
+//				g.drawRect(x, y, width, height);
+//				g.setColor(Color.red);
+//				g.drawRect((int)getHitbox().getX(), (int)getHitbox().getY(), (int)getHitbox().getWidth(), (int)getHitbox().getHeight());
 			} else {
 				/**
 				 * Die SmallAsteroieds werden generiert wenn diese noch nicht Exestieren. 

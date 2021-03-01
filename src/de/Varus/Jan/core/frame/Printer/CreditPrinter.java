@@ -17,7 +17,11 @@ import de.Varus.Jan.core.frame.MainFrame.MainFrame;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Credit.AbsatzPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.BackgroundPrint;
-
+/**
+ * Der Credit Prinzer
+ * @author Szenarios
+ * @version F1.03.21
+ */
 public class CreditPrinter extends JPanel implements IPrinter, KeyListener{
 	/**
 	 * Die {@link Drawable} die gezeichnet werden sollen. 
@@ -35,12 +39,14 @@ public class CreditPrinter extends JPanel implements IPrinter, KeyListener{
 	public CreditPrinter(GameSettings settings){
 		this.settings = settings; 
 		
+		int sekment = Main.mainFrame.getHeight() / (Main.mainFrame.getWidth() >= 1920 ? 30 : 15);
+		
 		registerDrawable(
-		new AbsatzPrint(60, "Programmierung", "Jan Lucas Zimmermann"), 
-		new AbsatzPrint(200, "Grafiken", "Elias B.", "Kayleigh M.", "Jan Lucas Zimmermann"),
-		new AbsatzPrint(415, "Musik", "Max G."),
-		new AbsatzPrint(590, "Story", "Kayleigh M.", "Jan Lucas Zimmermann"),
-		new AbsatzPrint(790, "Mitwirkende", "Aaron J.", "Jakob J.", "Svenja S."),
+		new AbsatzPrint(sekment*2, "Programmierung", "Jan Lucas Zimmermann"), 
+		new AbsatzPrint(sekment*6, "Grafiken", "Elias B.", "Kayleigh M.", "Jan Lucas Zimmermann"),
+		new AbsatzPrint(sekment*(6+7), "Musik", "Max G."),
+		new AbsatzPrint(sekment*(6+7+5), "Story", "Kayleigh M.", "Jan Lucas Zimmermann"),
+		new AbsatzPrint(sekment*(6+7+6+5), "Mitwirkende", "Aaron J.", "Jakob J.", "Svenja S."),
 		new BackgroundPrint()
 				);
 	}
@@ -75,11 +81,11 @@ public class CreditPrinter extends JPanel implements IPrinter, KeyListener{
 		
 		// Zeichnet den Text "(Drücken sie eine Beliebige Taste)"
 		String text = "(Drücken sie eine Beliebige Taste)"; 
-		g.setFont(new Font("Arial",Font.ITALIC,(int) 15));
+		g.setFont(new Font("Arial",Font.ITALIC,(int) (Main.mainFrame.getWidth() >= 1920 ? 15 : 10)));
 		int x = (Main.mainFrame.getWidth() / 2) - (text.length() / 2) * (g.getFont().getSize() / 2);
 		
 		g.setColor(Color.white);
-		g.drawString(text, (int) x, 1030);
+		g.drawString(text, (int) x, Main.mainFrame.getHeight() - (Main.mainFrame.getWidth() >= 1920 ? 15 : 10));
 			
 	}
 	

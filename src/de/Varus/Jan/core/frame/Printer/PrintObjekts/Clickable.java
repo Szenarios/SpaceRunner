@@ -1,6 +1,7 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts;
 
 /**
+ * Ist anclickbar.
  * @author Szenarios
  * @version B26.2.21 
  *

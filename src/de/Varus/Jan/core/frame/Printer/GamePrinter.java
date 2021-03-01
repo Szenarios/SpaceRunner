@@ -181,7 +181,7 @@ public class GamePrinter extends JPanel implements IPrinter {
 	}
 	
 	
-	/* 
+	/**
 	 * Hält unsere Asteorieden Konstant auf einer Zahl. 
 	 */
 	public void generateAsteroids() { 

@@ -124,8 +124,9 @@ public class MenuPrinter extends JPanel implements IPrinter {
 	public void setDifficulty(Difficulty difficulty) { 
 		this.settings.setDifficulty(difficulty);
 	}
-	
-	// Iniziiert das Bufferimage das zwischen gespeichert wird. 
+	/**
+	 * Iniziiert das Bufferimage das zwischen gespeichert wird. 
+	 */
 	public void init() {
 		bufferedImage = new BufferedImage(Main.mainFrame.getWidth(), Main.mainFrame.getHeight(), BufferedImage.TYPE_INT_RGB);
 		graphics = (Graphics2D) bufferedImage.getGraphics();

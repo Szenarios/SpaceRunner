@@ -5,6 +5,7 @@ de.Varus.Jan.core.frame.Listener
 de.Varus.Jan.core.frame.MainFrame
 de.Varus.Jan.core.frame.Printer
 de.Varus.Jan.core.frame.Printer.PrintObjekts
+de.Varus.Jan.core.frame.Printer.PrintObjekts.Credit
 de.Varus.Jan.core.frame.Printer.PrintObjekts.Game
 de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid
 de.Varus.Jan.core.frame.Printer.PrintObjekts.Game.Asteroid.RandomAsteroid

@@ -118,7 +118,7 @@ public class SpaceShipPrint implements Drawable, Moveable, Collideable {
 		g.drawImage(bufferedImage.getSubimage(0, (stateY / 200)*200, 200, 200), x, y, wight, height, null); 
 	
 		// Hitbox
-		g.drawRect((int)getHitbox().getX(), (int)getHitbox().getY(), (int)getHitbox().getWidth(), (int)getHitbox().getHeight());
+//		g.drawRect((int)getHitbox().getX(), (int)getHitbox().getY(), (int)getHitbox().getWidth(), (int)getHitbox().getHeight());
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package de.Varus.Jan.core.frame.Printer.PrintObjekts;
 
 import java.awt.Point;
 /**
+ * Man kann das objekt bewegen.
  * @author Szenarios
  * @version B26.2.21 
  *

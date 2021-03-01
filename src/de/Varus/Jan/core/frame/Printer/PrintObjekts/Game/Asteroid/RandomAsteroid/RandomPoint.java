@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 
 /**
- * Gibt einen Random {@link Point} zurück. der zwischen 0 und der Maximalen Screen Breite ist. 
+ * Gibt einen Random {@link Point} zurück. der zwischen null und der Maximalen Screen Breite ist. 
  * @author Szenarios
  * @version B26.2.21 
  *

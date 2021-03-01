@@ -67,9 +67,12 @@ public class TextPrint implements Drawable, Moveable {
 	public void draw(Graphics2D g) {
 		int realY; 
 		double realX; 
+		
+		int fontSize = Main.mainFrame.getWidth() >= 1920 ? 64 : 32; 
+		
 		for (int i = 0; i < text.size(); i++) {
 			String zeile = text.get(i); 
-			realY = y + (64 * i); 
+			realY = y + (fontSize * i); 
 
 			if(i+1 == text.size())
 				if (realY+150 < 0)
@@ -77,9 +80,9 @@ public class TextPrint implements Drawable, Moveable {
 			
 			g.setColor(Color.yellow);	
 			
-			realX = (Main.mainFrame.getWidth() / 2) - (zeile.length() / 2) * 32;
+			realX = (Main.mainFrame.getWidth() / 2) - (zeile.length() / 2) * (fontSize/2);
 			
-			g.setFont(new Font("Arial",Font.BOLD,(int) 64));
+			g.setFont(new Font("Arial",Font.BOLD,(int) fontSize));
 			g.drawString(zeile, (int) realX, realY);
 		}
 	}

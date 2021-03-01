@@ -1,6 +1,6 @@
 package de.Varus.Jan.core.frame.Printer.PrintObjekts;
 /**
- * 
+ * Ist ein Background
  * @author Szenarios
  * @version B26.2.21 
  *

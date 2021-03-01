@@ -3,8 +3,15 @@ package de.Varus.Jan.Test;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
+import org.junit.internal.runners.JUnit38ClassRunner;
 
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
+/**
+ * Eine Klasse die für J Unit test genutzt wird. 
+ * @author Szenarios 
+ * @version ?
+ *
+ */
 public class TestDrawable implements Drawable {
 	private int x; 
 	private int y; 

@@ -49,7 +49,7 @@ public class Main {
 	public static void main(String[] args) {
 		settings = new GameSettings(Difficulty.NORMAL); 
 		
-		musikPlayer = new MusikPlayer(); 
+		musikPlayer = new MusikPlayer(settings); 
 		discordStatus = new DiscordStatus();
 
 		mainFrame = new MainFrame(); 

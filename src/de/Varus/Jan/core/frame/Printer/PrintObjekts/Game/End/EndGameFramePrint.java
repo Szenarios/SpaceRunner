@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import de.Varus.Jan.core.Main;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
 
 /**
@@ -16,6 +17,11 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Drawable;
  *
  */
 public class EndGameFramePrint implements Drawable {
+	/**
+	 * Ob der Sound bereits abgespielt wurde. 
+	 */
+	private boolean played; 
+	
 	/**
 	 * Das Image was gezeichnet werden soll. 
 	 */
@@ -53,6 +59,8 @@ public class EndGameFramePrint implements Drawable {
 		
 		x = 0; 
 		y = 0; 
+		
+		played = false; 
 	}
 	
 	@Override
@@ -82,6 +90,12 @@ public class EndGameFramePrint implements Drawable {
 
 	@Override
 	public void draw(Graphics2D g) {
+		if(!played) {
+			played = true; 
+			Main.musikPlayer.playGameOverSound();
+		}
+			
+		
 		g.drawImage(image, x, y, width, height, null); 
 	}
 

@@ -148,7 +148,7 @@ public class AsteroidPrint implements Drawable, Moveable, Collideable {
 	public Rectangle getHitbox() {
 		int cutWidth = width / 10; 
 		int cutHeight = height / 10; 
-		return new Rectangle(x+cutWidth, y+6, width-(cutWidth*3), height-(cutHeight*3));
+		return new Rectangle(x+cutWidth, y+25, width-(cutWidth*3), height-(cutHeight*3));
 	}
 
 	@Override
@@ -163,6 +163,8 @@ public class AsteroidPrint implements Drawable, Moveable, Collideable {
 			// Wenn er nicht zerstört ist wird er gezeichnet!
 			if(!isDestroyed()) {
 				g.drawImage(image, x, y, width, height, null); 
+				
+				// Hitboxen
 				g.setColor(Color.white);
 				g.drawRect(x, y, width, height);
 				g.setColor(Color.red);

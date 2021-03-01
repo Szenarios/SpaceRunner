@@ -117,6 +117,7 @@ public class SpaceShipPrint implements Drawable, Moveable, Collideable {
 		// Dieser wert wird geteilt durch 200 und Mal 200 Gerechnet um nicht bei jeder neuen Aufruf eine Anderen Texture zu erzeugen sondern nur alle paar Aufrufen. 
 		g.drawImage(bufferedImage.getSubimage(0, (stateY / 200)*200, 200, 200), x, y, wight, height, null); 
 	
+		// Hitbox
 		g.drawRect((int)getHitbox().getX(), (int)getHitbox().getY(), (int)getHitbox().getWidth(), (int)getHitbox().getHeight());
 	}
 
@@ -241,6 +242,6 @@ public class SpaceShipPrint implements Drawable, Moveable, Collideable {
 
 	@Override
 	public Rectangle getHitbox() {
-		return new Rectangle(x + ((wight /2) - (wight / 4)), y, wight/2, height); 
+		return new Rectangle(x + ((wight /2) - (wight / 4)), y+(height/4), wight/2, height/2); 
 	}
 }

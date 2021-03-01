@@ -22,6 +22,7 @@ import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.LogoPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Arrow.ArrowRotation;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Buttons.ButtonPrint;
+import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Buttons.CreditButtonPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Buttons.PlayButtonPrint;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Buttons.SoundButton;
 import de.Varus.Jan.core.frame.Printer.PrintObjekts.Menu.Difficulty.Difficulty;
@@ -63,11 +64,15 @@ public class MenuPrinter extends JPanel implements IPrinter {
 		this.settings = settings; 
 		listener = new PrinterMouse(this); 
 		
-		registerDrawable(new BackgroundPrint(), new ButtonPrint("Grafiks/CloseButton.png", new CloseButtonRunnable(), 1), new SoundButton(2), new DifficultyPrint(this), new ArrowPrint(ArrowRotation.ARROWLEFT, this), new ArrowPrint(ArrowRotation.ARROWRIGHT, this), new PlayButtonPrint(settings), new LogoPrint());
+		registerDrawable(new BackgroundPrint(), new ButtonPrint("Grafiks/CloseButton.png", new CloseButtonRunnable(), 1), new CreditButtonPrint(3, settings), new SoundButton(2), new DifficultyPrint(this), new ArrowPrint(ArrowRotation.ARROWLEFT, this), new ArrowPrint(ArrowRotation.ARROWRIGHT, this), new PlayButtonPrint(settings), new LogoPrint());
 		
 		Main.discordStatus.chandeGameStatus(DiscordGameStatus.MENU);
 		
 		init();
+		
+		
+		if(settings.isPlaying())
+			Main.musikPlayer.playMusik();
 	}	
 	
 	@Override

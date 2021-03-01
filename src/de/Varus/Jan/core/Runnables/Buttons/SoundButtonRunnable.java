@@ -14,7 +14,7 @@ public class SoundButtonRunnable implements Runnable {
 		if(Main.musikPlayer.isClipAktiv())
 			Main.musikPlayer.stopMusik();
 		else 
-			Main.musikPlayer.stopMusik();
+			Main.musikPlayer.playMusik();
 	}
 
 }

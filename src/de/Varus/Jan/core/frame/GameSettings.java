@@ -32,6 +32,11 @@ public class GameSettings {
 	private boolean storyShown; 
 	
 	/**
+	 * Ob die Musik an ist oder nicht (True wenn ja)
+	 */
+	private boolean playing; 
+	
+	/**
 	 * Beinhaltet alle Aktuellen Informationen über das Laufende Spiel. 
 	 * @param difficulty Der Difficulty in dem das Spiel stattfindet. 
 	 */
@@ -41,6 +46,7 @@ public class GameSettings {
 		this.lifes = 100;
 		this.power = 100; 
 		this.storyShown = false; 
+		this.playing = true; 
 	}
 	/**
 	 * Gibt den Aktuellen {@link Difficulty} zurück. 
@@ -122,5 +128,21 @@ public class GameSettings {
 		this.lifes = 100;
 		this.power = 100;
 	}
+	/**
+	 * Gibt an ob Musik an ist. 
+	 * @return Ob Musik an ist true wenn ja. 
+	 */
+	public boolean isPlaying() {
+		return playing;
+	}
+	/**
+	 * Setzt ob Musik an ist. 
+	 * @param playing Der Neue wert ob Musik an ist. 
+	 */
+	public void setPlaying(boolean playing) {
+		this.playing = playing;
+	}
+	
+	
 	
 }
